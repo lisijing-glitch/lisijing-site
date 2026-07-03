@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SIJING</title>
+<meta name="description" content="Artist portfolio — works, statement, CV and research.">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;600;700&family=Noto+Serif+SC:wght@400;600;700&family=Noto+Serif+JP:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-lang="zh">
+
+<canvas id="horizon-field" aria-hidden="true"></canvas>
+
+<header class="site-header">
+  <a href="#/" class="site-mark">SIJING</a>
+
+  <button class="nav-toggle" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+
+  <nav class="site-nav">
+    <a href="#/about" data-route="about">About</a>
+    <a href="#/statement" data-route="statement">Statement</a>
+    <a href="#/works" data-route="works">Works</a>
+    <a href="#/cv" data-route="cv">CV</a>
+    <a href="#/research" data-route="research">Research</a>
+    <a href="#/contact" data-route="contact">Contact</a>
+  </nav>
+
+  <div class="lang-switch">
+    <button data-lang-btn="zh">中</button>
+    <button data-lang-btn="jp">日</button>
+    <button data-lang-btn="en">EN</button>
+  </div>
+</header>
+
+<main id="view-root">
+
+  <section data-view="home">
+    <div class="container">
+      <div class="hero" id="home-content"></div>
+    </div>
+  </section>
+
+  <section data-view="about" hidden>
+    <div class="container">
+      <h1 class="view-heading eyebrow" data-i18n-heading="about"></h1>
+      <div class="horizon-rule horizon-rule--tight"></div>
+      <div class="prose" id="about-content"></div>
+    </div>
+  </section>
+
+  <section data-view="statement" hidden>
+    <div class="container">
+      <h1 class="view-heading eyebrow" data-i18n-heading="statement"></h1>
+      <div class="horizon-rule horizon-rule--tight"></div>
+      <div class="prose" id="statement-content"></div>
+    </div>
+  </section>
+
+  <section data-view="works" hidden>
+    <div class="container">
+      <h1 class="view-heading eyebrow" data-i18n-heading="works"></h1>
+      <div class="horizon-rule horizon-rule--tight"></div>
+      <div id="works-list"></div>
+    </div>
+  </section>
+
+  <section data-view="work-detail" hidden>
+    <div class="container">
+      <div id="work-detail-content"></div>
+    </div>
+  </section>
+
+  <section data-view="cv" hidden>
+    <div class="container">
+      <h1 class="view-heading eyebrow" data-i18n-heading="cv"></h1>
+      <div class="horizon-rule horizon-rule--tight"></div>
+      <div id="cv-list"></div>
+    </div>
+  </section>
+
+  <section data-view="research" hidden>
+    <div class="container">
+      <h1 class="view-heading eyebrow" data-i18n-heading="research"></h1>
+      <div class="horizon-rule horizon-rule--tight"></div>
+      <div class="prose" id="research-content"></div>
+    </div>
+  </section>
+
+  <section data-view="contact" hidden>
+    <div class="container">
+      <h1 class="view-heading eyebrow" data-i18n-heading="contact"></h1>
+      <div class="horizon-rule horizon-rule--tight"></div>
+      <div class="prose" id="contact-content"></div>
+      <div class="contact-links" id="contact-links"></div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">SIJING OS</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
