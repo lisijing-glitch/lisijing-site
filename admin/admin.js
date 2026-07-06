@@ -464,33 +464,60 @@
       const file = await ghGetFile("data/works.json");
       state.works = file ? JSON.parse(file.content) : [];
       state.worksLoaded = true;
-      if (!state.works.length) {
-        listEl.innerHTML = '<p class="field-hint">还没有作品，填写上方表单新增第一件。</p>';
-        return;
-      }
-      listEl.innerHTML = state.works
-        .map((w) => {
-          const t = (w.title && (w.title.zh || w.title.en || w.title.jp)) || "（未命名）";
-          const tag = w.published === false ? "草稿" : "公开";
-          return `
-          <div class="entry-row">
-            <img src="../${escapeHtml(w.image || "")}" alt="" onerror="this.style.visibility='hidden'">
-            <div class="info">
-              <div class="t">${escapeHtml(t)}</div>
-              <div class="m">${escapeHtml(w.year || "")} · ${tag}${w.sold ? " · 已售" : ""}</div>
-            </div>
-            <div class="actions">
-              <button type="button" data-edit-work="${escapeHtml(w.id)}">编辑</button>
-              <button type="button" data-del-work="${escapeHtml(w.id)}">删除</button>
-            </div>
-          </div>`;
-        })
-        .join("");
-      qsa("[data-edit-work]", listEl).forEach((b) => b.addEventListener("click", () => editWork(b.dataset.editWork)));
-      qsa("[data-del-work]", listEl).forEach((b) => b.addEventListener("click", () => deleteWork(b.dataset.delWork)));
+      renderWorksListOnly();
     } catch (err) {
       listEl.innerHTML = `<p class="field-hint">读取失败：${escapeHtml(err.message)}</p>`;
     }
+  }
+
+  async function moveWork(id, direction) {
+    try {
+      const remote = await ghGetFile("data/works.json");
+      const works = remote ? JSON.parse(remote.content) : [];
+      const idx = works.findIndex((w) => w.id === id);
+      const target = idx + direction;
+      if (idx === -1 || target < 0 || target >= works.length) return;
+      [works[idx], works[target]] = [works[target], works[idx]];
+      await ghPutFile("data/works.json", JSON.stringify(works, null, 2), `调整作品顺序: ${id}`, remote ? remote.sha : null, false);
+      state.works = works;
+      renderWorksListOnly();
+      toast("顺序已调整，网站将在数分钟内自动更新。");
+    } catch (err) {
+      toast("调整顺序失败：" + err.message, "error");
+    }
+  }
+
+  function renderWorksListOnly() {
+    const listEl = qs("#works-entry-list");
+    if (!listEl) return;
+    if (!state.works.length) {
+      listEl.innerHTML = '<p class="field-hint">还没有作品，填写上方表单新增第一件。</p>';
+      return;
+    }
+    listEl.innerHTML = state.works
+      .map((w, idx) => {
+        const t = (w.title && (w.title.zh || w.title.en || w.title.jp)) || "（未命名）";
+        const tag = w.published === false ? "草稿" : "公开";
+        return `
+        <div class="entry-row">
+          <img src="../${escapeHtml(w.image || "")}" alt="" onerror="this.style.visibility='hidden'">
+          <div class="info">
+            <div class="t">${escapeHtml(t)}</div>
+            <div class="m">${escapeHtml(w.year || "")} · ${tag}${w.sold ? " · 已售" : ""}</div>
+          </div>
+          <div class="actions">
+            <button type="button" data-move-work-up="${escapeHtml(w.id)}" ${idx === 0 ? "disabled" : ""}>↑</button>
+            <button type="button" data-move-work-down="${escapeHtml(w.id)}" ${idx === state.works.length - 1 ? "disabled" : ""}>↓</button>
+            <button type="button" data-edit-work="${escapeHtml(w.id)}">编辑</button>
+            <button type="button" data-del-work="${escapeHtml(w.id)}">删除</button>
+          </div>
+        </div>`;
+      })
+      .join("");
+    qsa("[data-edit-work]", listEl).forEach((b) => b.addEventListener("click", () => editWork(b.dataset.editWork)));
+    qsa("[data-del-work]", listEl).forEach((b) => b.addEventListener("click", () => deleteWork(b.dataset.delWork)));
+    qsa("[data-move-work-up]", listEl).forEach((b) => b.addEventListener("click", () => moveWork(b.dataset.moveWorkUp, -1)));
+    qsa("[data-move-work-down]", listEl).forEach((b) => b.addEventListener("click", () => moveWork(b.dataset.moveWorkDown, 1)));
   }
 
   function resetWorkForm() {
