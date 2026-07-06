@@ -2,8 +2,8 @@
   {
     "id": "life-mr8uyl7s",
     "title": {
-      "zh": "生",
-      "jp": "生",
+      "zh": "《生》",
+      "jp": "「生」",
       "en": "Life"
     },
     "year": "２０２３",
@@ -16,7 +16,16 @@
     },
     "sold": false,
     "published": true,
-    "image": "works/life-mr8uyl7s.jpg?v=1783320467701"
+    "image": "works/life-mr8uyl7s.jpg?v=1783320467701",
+    "process": {
+      "description": {
+        "zh": "",
+        "jp": "",
+        "en": ""
+      },
+      "images": [],
+      "videos": []
+    }
   },
   {
     "id": "life-series-second-phase-of-spring-mr8wqwuw",
