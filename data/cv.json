@@ -1,3 +1,20 @@
 {
-  "exhibitions": []
+  "exhibitions": [
+    {
+      "id": "li-sijing-mr8v69p2",
+      "title": {
+        "zh": " 李 思静",
+        "jp": "リ　シセイ",
+        "en": "LI SIJING"
+      },
+      "location": {
+        "zh": "出生地:中国新疆 现住地:日本东京",
+        "jp": "出身：中国・新疆 　現在、東京都を拠点に活動",
+        "en": ""
+      },
+      "year": "",
+      "category": "solo",
+      "published": true
+    }
+  ]
 }
