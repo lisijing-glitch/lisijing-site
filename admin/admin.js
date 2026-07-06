@@ -23,6 +23,8 @@
   const qsa = (sel, root = document) => Array.from(root.querySelectorAll(sel));
 
   const state = { works: [], cv: [], about: {}, worksLoaded: false, cvLoaded: false, pagesLoaded: false };
+  let currentProcessImages = [];
+  let currentProcessVideos = [];
 
   /* ---- small utilities ---- */
 
@@ -278,6 +280,140 @@
     });
   }
 
+  /* ---- creative process: multi-image gallery ---- */
+
+  function renderProcessImageList() {
+    const listEl = qs("#process-image-list");
+    if (!listEl) return;
+    if (!currentProcessImages.length) {
+      listEl.innerHTML = '<p class="field-hint">还没有创作过程图片。</p>';
+      return;
+    }
+    listEl.innerHTML = currentProcessImages
+      .map(
+        (src, i) => `
+        <div class="entry-row">
+          <img src="../${escapeHtml(src)}" alt="" onerror="this.style.visibility='hidden'">
+          <div class="info"><div class="t">图 ${i + 1}</div></div>
+          <div class="actions">
+            <button type="button" data-del-process-image="${i}">删除</button>
+          </div>
+        </div>`
+      )
+      .join("");
+    qsa("[data-del-process-image]", listEl).forEach((b) =>
+      b.addEventListener("click", () => {
+        currentProcessImages.splice(Number(b.dataset.delProcessImage), 1);
+        renderProcessImageList();
+      })
+    );
+  }
+
+  function wireProcessImageUpload() {
+    const drop = qs("#process-image-drop"),
+      input = qs("#process-image-input");
+    if (!drop || !input) return;
+    drop.addEventListener("click", () => input.click());
+    input.addEventListener("change", async () => {
+      const files = Array.from(input.files || []);
+      if (!files.length) return;
+      for (const file of files) {
+        try {
+          toast(`正在压缩并上传创作过程图片…（${file.name}）`);
+          const { base64 } = await fileToResizedBase64(file, 1800, 0.82);
+          const path = `works/process-${Date.now()}-${Math.random().toString(36).slice(2, 7)}.jpg`;
+          await ghPutFile(path, base64, `创作过程图片: ${path}`, null, true);
+          currentProcessImages.push(path);
+          renderProcessImageList();
+        } catch (err) {
+          toast("上传失败：" + err.message, "error");
+        }
+      }
+      input.value = "";
+    });
+  }
+
+  /* ---- creative process: videos (raw upload, no resize) ---- */
+
+  function fileToBase64Raw(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onerror = () => reject(new Error("读取视频失败"));
+      reader.onload = (e) => resolve(e.target.result.split(",")[1]);
+      reader.readAsDataURL(file);
+    });
+  }
+
+  function renderProcessVideoList() {
+    const listEl = qs("#process-video-list");
+    if (!listEl) return;
+    if (!currentProcessVideos.length) {
+      listEl.innerHTML = '<p class="field-hint">还没有创作过程视频。</p>';
+      return;
+    }
+    listEl.innerHTML = currentProcessVideos
+      .map((v, i) => {
+        const label = v.type === "upload" ? `视频文件：${(v.src || "").split("/").pop()}` : `链接：${v.url || ""}`;
+        return `
+        <div class="entry-row">
+          <div class="info"><div class="t">${escapeHtml(label)}</div></div>
+          <div class="actions">
+            <button type="button" data-del-process-video="${i}">删除</button>
+          </div>
+        </div>`;
+      })
+      .join("");
+    qsa("[data-del-process-video]", listEl).forEach((b) =>
+      b.addEventListener("click", () => {
+        currentProcessVideos.splice(Number(b.dataset.delProcessVideo), 1);
+        renderProcessVideoList();
+      })
+    );
+  }
+
+  function wireProcessVideoUpload() {
+    const drop = qs("#process-video-drop"),
+      input = qs("#process-video-input"),
+      urlInput = qs("#process-video-url-input"),
+      addLinkBtn = qs("#process-video-add-link-btn");
+    if (drop && input) {
+      drop.addEventListener("click", () => input.click());
+      input.addEventListener("change", async () => {
+        const files = Array.from(input.files || []);
+        if (!files.length) return;
+        const MAX_BYTES = 50 * 1024 * 1024;
+        for (const file of files) {
+          if (file.size > MAX_BYTES) {
+            toast(`「${file.name}」超过 50MB，建议压缩后再上传，或改用视频链接。`, "error");
+            continue;
+          }
+          try {
+            toast(`正在上传视频…（${file.name}，可能需要一些时间）`);
+            const base64 = await fileToBase64Raw(file);
+            const ext = (file.name.split(".").pop() || "mp4").toLowerCase();
+            const path = `works/process-${Date.now()}-${Math.random().toString(36).slice(2, 7)}.${ext}`;
+            await ghPutFile(path, base64, `创作过程视频: ${path}`, null, true);
+            currentProcessVideos.push({ type: "upload", src: path });
+            renderProcessVideoList();
+            toast("视频上传成功。");
+          } catch (err) {
+            toast("视频上传失败：" + err.message, "error");
+          }
+        }
+        input.value = "";
+      });
+    }
+    if (addLinkBtn && urlInput) {
+      addLinkBtn.addEventListener("click", () => {
+        const url = urlInput.value.trim();
+        if (!url) return;
+        currentProcessVideos.push({ type: "embed", url });
+        urlInput.value = "";
+        renderProcessVideoList();
+      });
+    }
+  }
+
   /* ---- tabs (generic, handles nested groups: main / page-selector / lang) ---- */
 
   function wireTabGroup(groupEl) {
@@ -366,6 +502,11 @@
     qs("#work-cancel-edit").hidden = true;
     qs('input[name="work-sold"][value="false"]').checked = true;
     qs('input[name="work-published"][value="true"]').checked = true;
+    writeTriple("work-process-desc", {});
+    currentProcessImages = [];
+    currentProcessVideos = [];
+    renderProcessImageList();
+    renderProcessVideoList();
   }
 
   function editWork(id) {
@@ -388,6 +529,13 @@
       preview.hidden = true;
     }
     qs("#work-image-input").value = "";
+    writeTriple("work-process-desc", w.process && w.process.description);
+    currentProcessImages = (w.process && Array.isArray(w.process.images) ? [...w.process.images] : []).filter(Boolean);
+    currentProcessVideos = (w.process && Array.isArray(w.process.videos) ? [...w.process.videos] : []).filter(
+      (v) => v && (v.src || v.url)
+    );
+    renderProcessImageList();
+    renderProcessVideoList();
     qs("#work-form-title").textContent = "编辑作品";
     qs("#work-cancel-edit").hidden = false;
     qs("#work-form").scrollIntoView({ behavior: "smooth", block: "start" });
@@ -440,6 +588,11 @@
         sold: qs('input[name="work-sold"]:checked').value === "true",
         published: qs('input[name="work-published"]:checked').value === "true",
         image: imagePath,
+        process: {
+          description: readTriple("work-process-desc"),
+          images: currentProcessImages.filter(Boolean),
+          videos: currentProcessVideos.filter((v) => v && (v.src || v.url)),
+        },
       };
 
       const idx = works.findIndex((w) => w.id === editingId);
@@ -679,6 +832,10 @@
     wireRTEToolbars();
     wireImageDrop("work-image-drop", "work-image-input", "work-image-preview");
     wireImageDrop("home-image-drop", "home-image-input", "home-image-preview");
+    wireProcessImageUpload();
+    renderProcessImageList();
+    wireProcessVideoUpload();
+    renderProcessVideoList();
 
     /* settings */
     const cfg = getConfig();

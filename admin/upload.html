@@ -90,6 +90,43 @@
         </div>
       </div>
 
+      <div class="field" data-tab-group="work-process-desc-langs">
+        <label>创作过程说明（三语，可留空）</label>
+        <div class="lang-tabs">
+          <button type="button" class="lang-tab is-active" data-tab-target="zh">中文</button>
+          <button type="button" class="lang-tab" data-tab-target="jp">日本語</button>
+          <button type="button" class="lang-tab" data-tab-target="en">English</button>
+        </div>
+        <div class="lang-panel" data-tab-panel="zh">
+          <textarea data-field="work-process-desc.zh" placeholder="中文创作过程说明…（换行会自动分段）"></textarea>
+        </div>
+        <div class="lang-panel" data-tab-panel="jp" hidden>
+          <textarea data-field="work-process-desc.jp" placeholder="制作過程の説明…"></textarea>
+        </div>
+        <div class="lang-panel" data-tab-panel="en" hidden>
+          <textarea data-field="work-process-desc.en" placeholder="Process description…"></textarea>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>创作过程图片（可多张，可留空）</label>
+        <div class="image-drop" id="process-image-drop">点击选择图片（可一次选多张，会自动压缩）</div>
+        <input type="file" id="process-image-input" accept="image/*" multiple hidden>
+        <div class="entry-list" id="process-image-list"></div>
+      </div>
+
+      <div class="field">
+        <label>创作过程视频（可多个，可留空）</label>
+        <div class="image-drop" id="process-video-drop">点击上传视频文件（单个建议不超过 50MB，过大可能上传失败）</div>
+        <input type="file" id="process-video-input" accept="video/*" multiple hidden>
+        <p class="field-hint" style="margin: var(--sp-2) 0 0.4em;">或粘贴 YouTube / Bilibili 等视频链接：</p>
+        <div class="btn-row">
+          <input type="url" id="process-video-url-input" placeholder="https://…" style="flex:1; min-width: 0; border:1px solid var(--surface); background:var(--paper); padding:0.7em 0.8em; font-size:var(--text-sm); font-family:var(--font-serif);">
+          <button type="button" class="btn btn-ghost" id="process-video-add-link-btn">添加链接</button>
+        </div>
+        <div class="entry-list" id="process-video-list"></div>
+      </div>
+
       <div class="field-row">
         <div class="field">
           <label>销售状态</label>
