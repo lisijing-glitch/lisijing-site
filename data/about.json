@@ -26,11 +26,11 @@
     "en": "<p>Add research or writing in the admin Research tab.</p>"
   },
   "contact": {
-    "zh": "<p>在后台「文字页面 → Contact」中填写联系方式。</p>",
-    "jp": "<p>管理画面の「Contact」で連絡先をご記入ください。</p>",
-    "en": "<p>Add your contact details in the admin Contact tab.</p>",
-    "email": "",
-    "instagram": "",
+    "zh": "<p><strong data-start=\"71\" data-end=\"81\" style=\"caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0);\">WeChat</strong><span style=\"caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0); font-size: medium;\">　reaiyiqie73</span><br data-start=\"93\" data-end=\"96\" style=\"caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0);\"><strong data-start=\"96\" data-end=\"109\" style=\"caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0);\">Instagram</strong><span style=\"caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0); font-size: medium;\">　@sijinglili</span><br data-start=\"121\" data-end=\"124\" style=\"caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0);\"><strong data-start=\"124\" data-end=\"134\" style=\"caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0);\">E-mail &nbsp; &nbsp;&nbsp;</strong><span style=\"font-size: var(--text-sm); font-family: var(--font-serif);\">risisei93@gmail.com &nbsp;&nbsp;</span><br></p>",
+    "jp": "<p><strong data-start=\"71\" data-end=\"81\" style=\"font-size: 13.6px; caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0);\">WeChat</strong><span style=\"caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0); font-size: medium;\">　reaiyiqie73</span><br data-start=\"93\" data-end=\"96\" style=\"font-size: 13.6px; caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0);\"><strong data-start=\"96\" data-end=\"109\" style=\"font-size: 13.6px; caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0);\">Instagram</strong><span style=\"caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0); font-size: medium;\">　@sijinglili</span><br data-start=\"121\" data-end=\"124\" style=\"font-size: 13.6px; caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0);\"><strong data-start=\"124\" data-end=\"134\" style=\"font-size: 13.6px; caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0);\">E-mail &nbsp; &nbsp;&nbsp;</strong><span style=\"font-family: var(--font-serif); font-size: var(--text-sm);\">risisei93@gmail.com &nbsp;&nbsp;</span><br></p>",
+    "en": "<p><strong data-start=\"71\" data-end=\"81\" style=\"font-size: 13.6px; caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0);\">WeChat</strong><span style=\"caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0); font-size: medium;\">　reaiyiqie73</span><br data-start=\"93\" data-end=\"96\" style=\"font-size: 13.6px; caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0);\"><strong data-start=\"96\" data-end=\"109\" style=\"font-size: 13.6px; caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0);\">Instagram</strong><span style=\"caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0); font-size: medium;\">　@sijinglili</span><br data-start=\"121\" data-end=\"124\" style=\"font-size: 13.6px; caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0);\"><strong data-start=\"124\" data-end=\"134\" style=\"font-size: 13.6px; caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0);\">E-mail &nbsp; &nbsp;&nbsp;</strong><span style=\"font-family: var(--font-serif); font-size: var(--text-sm);\">risisei93@gmail.com &nbsp;&nbsp;</span><br></p>",
+    "email": "risisei93@gmail.com",
+    "instagram": "https://www.instagram.com/sijinglili?utm_source=qr",
     "other": ""
   }
 }
