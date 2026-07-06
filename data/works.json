@@ -1,1 +1,21 @@
-[]
+[
+  {
+    "id": "life-mr8uyl7s",
+    "title": {
+      "zh": "生",
+      "jp": "生",
+      "en": "Life"
+    },
+    "year": "２０２３",
+    "size": "60cm*80cm",
+    "material": "麻纸 铜箔 盛上胡粉  敦煌橙土 云母 骨描墨 蓝铜矿 青金石 绿松石  赤铁矿  等矿物颜料 动物骨胶",
+    "description": {
+      "zh": "生系列的创作思考中，人类并非单一的主体，而是由共生基因组成的协作联盟体。而这个“体”所栖息的，正是细胞所构成的微型世界。我希望跳出宏观人类史的语境，聚焦于微观而持续运作的系统，探索绘画的物质性与生命概念之间的关系。",
+      "jp": "《生》シリーズでは、人間を単一の主体としてではなく、共生する遺伝子によって構成された協働的な生命共同体として捉えている。そして、この「生命体」が宿る場こそ、細胞によって形づくられたミクロの世界である。\n私は人類史というマクロな視点から距離を置き、絶えず機能し続ける微視的なシステムに焦点を当てることで、絵画という物質的な存在と「生命」という概念との関係を探求している。",
+      "en": "In the Life series, human beings are not regarded as a singular subject, but as a collaborative assemblage composed of symbiotic genes. This living assemblage inhabits a microscopic world structured by cells.\nBy moving beyond the grand narrative of human history and focusing instead on the continuously functioning systems of the microscopic world, I seek to explore the relationship between the materiality of painting and the concept of life."
+    },
+    "sold": false,
+    "published": true,
+    "image": "works/life-mr8uyl7s.jpg?v=1783320467701"
+  }
+]
