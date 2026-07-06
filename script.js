@@ -35,6 +35,26 @@
   };
   const EMPTY_CV = { zh: "尚无展览记录。", jp: "展示履歴はまだありません。", en: "No exhibitions yet." };
   const NOT_FOUND = { zh: "未找到该作品。", jp: "作品が見つかりません。", en: "Work not found." };
+  const PROCESS_LABEL = { zh: "创作过程", jp: "制作過程", en: "Process" };
+  const WATCH_VIDEO_LABEL = { zh: "观看视频 ↗", jp: "動画を見る ↗", en: "Watch video ↗" };
+
+  function buildVideoEmbed(entry) {
+    if (!entry) return "";
+    if (entry.type === "upload" && entry.src) {
+      return `<video class="process-video" controls preload="metadata" src="${escapeHtml(entry.src)}"></video>`;
+    }
+    const url = entry.url || "";
+    if (!url) return "";
+    const yt = url.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/shorts\/)([\w-]{6,})/);
+    if (yt) {
+      return `<div class="process-video-embed"><iframe src="https://www.youtube.com/embed/${yt[1]}" title="process video" loading="lazy" allow="fullscreen" allowfullscreen></iframe></div>`;
+    }
+    const bv = url.match(/bilibili\.com\/video\/(BV[\w]+)/i);
+    if (bv) {
+      return `<div class="process-video-embed"><iframe src="https://player.bilibili.com/player.html?bvid=${bv[1]}&autoplay=0" title="process video" loading="lazy" allow="fullscreen" allowfullscreen></iframe></div>`;
+    }
+    return `<a class="process-video-link mono" href="${escapeHtml(url)}" target="_blank" rel="noopener">${pick(WATCH_VIDEO_LABEL)}</a>`;
+  }
   window.SIJING_CATEGORY_LABELS = {
     solo: { zh: "个展", jp: "個展", en: "Solo Exhibition" },
     group: { zh: "群展", jp: "グループ展", en: "Group Exhibition" },
@@ -162,7 +182,7 @@
       root.innerHTML = `<div class="empty-state prose"><p>${pick(EMPTY_WORKS)}<br>${pick(EMPTY_WORKS_HINT)}</p></div>`;
       return;
     }
-    const groups = groupByYear([...visible].reverse(), (w) => w.year);
+    const groups = groupByYear(visible, (w) => w.year);
     root.innerHTML = groups
       .map(
         ([year, items]) => `
@@ -211,6 +231,20 @@
           .map((p) => `<p>${escapeHtml(p)}</p>`)
           .join("")
       : "";
+    const processDesc = pick(work.process && work.process.description);
+    const processDescHtml = processDesc
+      ? processDesc
+          .split(/\n+/)
+          .filter(Boolean)
+          .map((p) => `<p>${escapeHtml(p)}</p>`)
+          .join("")
+      : "";
+    const processImages = (work.process && Array.isArray(work.process.images) ? work.process.images : []).filter(Boolean);
+    const processVideos = (work.process && Array.isArray(work.process.videos) ? work.process.videos : []).filter(
+      (v) => v && (v.src || v.url)
+    );
+    const hasProcess = processDescHtml || processImages.length || processVideos.length;
+
     root.innerHTML = `
       <a href="#/works" class="work-detail-back mono">${pick(BACK_LABEL)}</a>
       <div class="work-detail">
@@ -228,6 +262,36 @@
           <div class="prose">${descHtml}</div>
         </div>
       </div>
+      ${
+        hasProcess
+          ? `
+      <div class="work-process">
+        <div class="horizon-rule"></div>
+        <h2 class="view-heading eyebrow">${pick(PROCESS_LABEL)}</h2>
+        ${processDescHtml ? `<div class="prose work-process-text">${processDescHtml}</div>` : ""}
+        ${
+          processImages.length
+            ? `<div class="process-gallery">
+                ${processImages
+                  .map(
+                    (src, i) => `
+                  <a class="process-image" href="${escapeHtml(src)}" target="_blank" rel="noopener">
+                    <img src="${escapeHtml(src)}" alt="${escapeHtml(title)} — ${pick(PROCESS_LABEL)} ${i + 1}" loading="lazy">
+                  </a>`
+                  )
+                  .join("")}
+              </div>`
+            : ""
+        }
+        ${
+          processVideos.length
+            ? `<div class="process-videos">${processVideos.map(buildVideoEmbed).join("")}</div>`
+            : ""
+        }
+      </div>
+      `
+          : ""
+      }
     `;
   }
 
