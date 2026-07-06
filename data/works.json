@@ -45,5 +45,33 @@
       "images": [],
       "videos": []
     }
+  },
+  {
+    "id": "ghost-willow-life-series-mr8x0eem",
+    "title": {
+      "zh": "《鬼怖木－生系列》",
+      "jp": "鬼怖木―「生」シリーズ",
+      "en": "“Ghost Willow” – Life Series"
+    },
+    "year": "2024",
+    "size": "30 × 40 cm",
+    "material": "麻紙・泥岩・赤鉄鉱・胡粉などの鉱物顔料・動物性膠/Hemp paper, mudstone, hematite, gofun, mineral pigments, animal glue",
+    "description": {
+      "zh": "作品灵感来源于天津独乐寺内的一棵千年古树。\n在“生”系列的创作思考中，我尝试跳出以人类为中心的宏观历史叙述，转而聚焦于微观且持续运作的生命系统。\n在中国文化中，“鬼怖木”指柳树，象征春天的再生，同时也承载着驱除疾病与祈求生命延续的意义。",
+      "jp": "本作品は、中国・天津の独楽寺にある樹齢千年の古木から着想を得ている。\n「生」シリーズの思考において、私は人間中心のマクロな歴史的文脈から離れ、微視的で持続的に機能する生命のシステムへと視点を移そうとしている。\n中国文化において「鬼怖木」とは柳の木を指し、春の再生の象徴であると同時に、疫病を祓い、生命の継続を祈る意味を持つ。",
+      "en": "This work is inspired by a thousand-year-old tree located in Dule Temple in Tianjin, China.\nWithin the conceptual framework of the “Life” series, I aim to move beyond a human-centered, macro-historical perspective and instead focus on microscopic, continuously operating systems of life.\nIn Chinese culture, “Ghost Willow” refers to the willow tree, which symbolizes the regeneration of spring and is believed to ward off disease and pray for the continuation of life."
+    },
+    "sold": false,
+    "published": true,
+    "image": "works/ghost-willow-life-series-mr8x0eem.jpg?v=1783323911883",
+    "process": {
+      "description": {
+        "zh": "",
+        "jp": "",
+        "en": ""
+      },
+      "images": [],
+      "videos": []
+    }
   }
 ]
