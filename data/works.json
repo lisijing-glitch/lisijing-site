@@ -239,5 +239,37 @@
       "images": [],
       "videos": []
     }
+  },
+  {
+    "id": "rhetoric-of-two-sides-mrel5860",
+    "title": {
+      "zh": "两面的修辞",
+      "jp": "両面の修辞",
+      "en": "  Rhetoric of Two Sides"
+    },
+    "year": "2026",
+    "size": "41.0×31.8cm",
+    "material": "紙本墨彩・岩絵具・顔彩・動物膠",
+    "description": {
+      "zh": "把自我暂时拆解，切换到”粒子”的视角——个体的内在与群体的社会性,在这里被同时把握。",
+      "jp": "自我をいったん分解し、「粒子」という視点に切り替える——個の内面と群体としての社会性を、同時に捉えようとする試み。",
+      "en": "Taking the self apart for a moment and switching to the viewpoint of the “particle” — grasping the individual and the collective at once."
+    },
+    "sold": false,
+    "published": true,
+    "image": "works/rhetoric-of-two-sides-mrel5860.jpg?v=1783666781590",
+    "process": {
+      "description": {
+        "zh": "",
+        "jp": "",
+        "en": ""
+      },
+      "images": [
+        "works/process-1783666605129-p6h96.jpg",
+        "works/process-1783666607719-d4kj9.jpg",
+        "works/process-1783666610373-31563.jpg"
+      ],
+      "videos": []
+    }
   }
 ]
