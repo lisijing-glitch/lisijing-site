@@ -79,6 +79,22 @@
       "year": "2023",
       "category": "group",
       "published": true
+    },
+    {
+      "id": "starfirecontemporary-youth-art-exhibition-mrexni02",
+      "title": {
+        "zh": "星星之火・当代青年艺术大展",
+        "jp": "星の火・現代青年芸術大展",
+        "en": "Starfire・Contemporary Youth Art Exhibition"
+      },
+      "location": {
+        "zh": "北京",
+        "jp": "北京　中国",
+        "en": "Beijing. China"
+      },
+      "year": "2025",
+      "category": "group",
+      "published": true
     }
   ]
 }
