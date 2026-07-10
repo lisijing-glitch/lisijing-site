@@ -47,6 +47,22 @@
       "year": "2025",
       "category": "solo",
       "published": true
+    },
+    {
+      "id": "2nd-hangzhou-zhenguan-mineral-pigment-exhibition-selected-mrewse6g",
+      "title": {
+        "zh": "第二届杭州贞观岩彩大展（入选）",
+        "jp": " 第2回杭州貞観岩彩大展（入選）",
+        "en": "2nd Hangzhou Zhenguan Mineral Pigment Exhibition (Selected)"
+      },
+      "location": {
+        "zh": "杭州",
+        "jp": "杭州",
+        "en": "Hangzhou, China"
+      },
+      "year": "2025",
+      "category": "group",
+      "published": true
     }
   ]
 }
