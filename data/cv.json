@@ -63,6 +63,22 @@
       "year": "2025",
       "category": "group",
       "published": true
+    },
+    {
+      "id": "tianjin-digital-art-museum-selected-mrewyk4d",
+      "title": {
+        "zh": " 天津数字艺术博物馆（入选）",
+        "jp": "天津デジタルアートミュージアム入選",
+        "en": "Tianjin Digital Art Museum (Selected)"
+      },
+      "location": {
+        "zh": "天津",
+        "jp": "天津",
+        "en": "Tianjin, China"
+      },
+      "year": "2023",
+      "category": "group",
+      "published": true
     }
   ]
 }
