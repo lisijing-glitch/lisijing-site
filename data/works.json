@@ -271,5 +271,33 @@
       ],
       "videos": []
     }
+  },
+  {
+    "id": "letting-all-things-pass-through-the-body-i-mrelf5qr",
+    "title": {
+      "zh": "允许万物从身体穿过",
+      "jp": "万物を身に通す (I)",
+      "en": " Letting All Things Pass Through the Body (I)"
+    },
+    "year": "2026",
+    "size": "53.0×45.5cm",
+    "material": "紙本墨彩・岩絵具・顔彩・動物膠",
+    "description": {
+      "zh": "让万物穿过自己的身体——不是抵御，而是容许",
+      "jp": "万物を自らの身に通す——拒むのではなく、通すこと",
+      "en": "Letting everything pass through one’s own body — not resistance, but permeability."
+    },
+    "sold": false,
+    "published": true,
+    "image": "works/letting-all-things-pass-through-the-body-i-mrelf5qr.jpg?v=1783667245273",
+    "process": {
+      "description": {
+        "zh": "",
+        "jp": "",
+        "en": ""
+      },
+      "images": [],
+      "videos": []
+    }
   }
 ]
