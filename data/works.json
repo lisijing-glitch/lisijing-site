@@ -6,6 +6,11 @@
       "jp": "「生」",
       "en": "Life"
     },
+    "series": {
+      "zh": "",
+      "jp": "",
+      "en": ""
+    },
     "year": "2023",
     "size": "60cm*80cm",
     "material": "麻纸 铜箔 盛上胡粉  敦煌橙土 云母 骨描墨 蓝铜矿 青金石 绿松石  赤铁矿  等矿物颜料 动物骨胶",
@@ -23,7 +28,66 @@
         "jp": "",
         "en": ""
       },
-      "images": [],
+      "images": [
+        {
+          "src": "works/gallery-1783688053869-6sv7f.jpg",
+          "caption": {
+            "zh": "",
+            "jp": "",
+            "en": ""
+          }
+        },
+        {
+          "src": "works/gallery-1783688057303-maehv.jpg",
+          "caption": {
+            "zh": "",
+            "jp": "",
+            "en": ""
+          }
+        },
+        {
+          "src": "works/gallery-1783688060422-44d5v.jpg",
+          "caption": {
+            "zh": "",
+            "jp": "",
+            "en": ""
+          }
+        },
+        {
+          "src": "works/gallery-1783688064504-u23k8.jpg",
+          "caption": {
+            "zh": "",
+            "jp": "",
+            "en": ""
+          }
+        }
+      ],
+      "exhibitionImages": [
+        {
+          "src": "works/gallery-1783688125108-qqe8e.jpg",
+          "caption": {
+            "zh": "",
+            "jp": "",
+            "en": ""
+          }
+        },
+        {
+          "src": "works/gallery-1783688128537-gmiku.jpg",
+          "caption": {
+            "zh": "",
+            "jp": "",
+            "en": ""
+          }
+        },
+        {
+          "src": "works/gallery-1783688131929-exnxw.jpg",
+          "caption": {
+            "zh": "",
+            "jp": "",
+            "en": ""
+          }
+        }
+      ],
       "videos": []
     }
   },
