@@ -28,34 +28,6 @@
     }
   },
   {
-    "id": "life-series-second-phase-of-spring-mr8wqwuw",
-    "title": {
-      "zh": "《二候－生系列》",
-      "jp": "「生」シリーズ 一二候",
-      "en": "“Life” Series: Second Phase of Spring"
-    },
-    "year": "2023",
-    "size": "30 × 40 cm",
-    "material": "岩絵具・銀箔",
-    "description": {
-      "zh": "“二候”是中国传统中指春季万物开始萌发的时节。\n在这一阶段的创作中，我围绕“何谓生命”“生命以何种形式存在”等问题展开思考，这些思考逐渐在绘画中变得清晰可见。",
-      "jp": "二候」とは、中国において春に芽吹く時期を指す言葉である。\n本作品では、「生きるとは何か」「生命はどのような形で存在するのか」といった思考を起点とし、それらが絵画の中で次第に明確な形として現れていった。",
-      "en": "“Second Phase” refers to the period in early spring in traditional Chinese seasonal terms, when life begins to sprout.\nIn this work, I explore questions such as “What does it mean to live?” and “In what form does life exist?”, allowing these reflections to gradually take shape within the painting."
-    },
-    "sold": true,
-    "published": true,
-    "image": "works/life-series-second-phase-of-spring-mr8wqwuw.jpg?v=1783323518549",
-    "process": {
-      "description": {
-        "zh": "",
-        "jp": "",
-        "en": ""
-      },
-      "images": [],
-      "videos": []
-    }
-  },
-  {
     "id": "ghost-willow-life-series-mr8x0eem",
     "title": {
       "zh": "《鬼怖木－生系列》",
@@ -73,6 +45,34 @@
     "sold": false,
     "published": true,
     "image": "works/ghost-willow-life-series-mr8x0eem.jpg?v=1783323911883",
+    "process": {
+      "description": {
+        "zh": "",
+        "jp": "",
+        "en": ""
+      },
+      "images": [],
+      "videos": []
+    }
+  },
+  {
+    "id": "life-series-second-phase-of-spring-mr8wqwuw",
+    "title": {
+      "zh": "《二候－生系列》",
+      "jp": "「生」シリーズ 一二候",
+      "en": "“Life” Series: Second Phase of Spring"
+    },
+    "year": "2023",
+    "size": "30 × 40 cm",
+    "material": "岩絵具・銀箔",
+    "description": {
+      "zh": "“二候”是中国传统中指春季万物开始萌发的时节。\n在这一阶段的创作中，我围绕“何谓生命”“生命以何种形式存在”等问题展开思考，这些思考逐渐在绘画中变得清晰可见。",
+      "jp": "二候」とは、中国において春に芽吹く時期を指す言葉である。\n本作品では、「生きるとは何か」「生命はどのような形で存在するのか」といった思考を起点とし、それらが絵画の中で次第に明確な形として現れていった。",
+      "en": "“Second Phase” refers to the period in early spring in traditional Chinese seasonal terms, when life begins to sprout.\nIn this work, I explore questions such as “What does it mean to live?” and “In what form does life exist?”, allowing these reflections to gradually take shape within the painting."
+    },
+    "sold": true,
+    "published": true,
+    "image": "works/life-series-second-phase-of-spring-mr8wqwuw.jpg?v=1783323518549",
     "process": {
       "description": {
         "zh": "",
