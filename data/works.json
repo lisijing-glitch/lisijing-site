@@ -211,5 +211,33 @@
       ],
       "videos": []
     }
+  },
+  {
+    "id": "lets-run-away-together-mreidlli",
+    "title": {
+      "zh": "一起逃跑吧",
+      "jp": "一緒に逃げよう",
+      "en": " Let’s Run Away Together"
+    },
+    "year": "2023",
+    "size": "30 × 30 cm",
+    "material": "材料 岩絵具",
+    "description": {
+      "zh": "我养过很多动物，却从不为它们取名——因为害怕生命消散后，那个名字会像钉子一样扎进心里。\n《一起逃跑吧》画的是一只在市集里遇见的鸡——羽毛蓬松得近乎兽类，眼神却带着某种警觉的清醒。我养过很多动物，却始终不给它们取名字。这不是因为不在乎，恰恰相反：正因为太清楚自己会在意，我才刻意回避这个动作——一旦有了名字，生命消失之后，那个名字反而会像钉子一样，深深扎进心里，让灵魂无法真正离开。画面里的鸡，某种意义上替我说出了这句话——“一起逃跑吧”，是想象中一种共谋般的邀请：如果我们都无法承受”被记住”这件事最终带来的重量，那不如一起，趁还来得及的时候，先离开。",
+      "jp": "多くの動物を飼ってきたが、いつも名前を付けない——生命が消えても、名前だけが釘のように心に残ってしまうのが怖いから。\n『一緒に逃げよう』は、市場で出会った一羽の鶏を描いている——毛は獣のように膨らんでいるが、その眼差しにはどこか鋭い覚醒が宿っている。私は多くの動物を飼ってきたが、いつも名前を付けない。それは気にかけていないからではなく、むしろその逆で、自分がどれほど気にかけてしまうかをよく知っているからこそ、あえてその行為を避けているのだ。画面の鶏は、ある意味で私に代わってこう言っているのかもしれない——「一緒に逃げよう」とは、もし私たちが「記憶される」ということの最終的な重さに耐えられないのなら、間に合ううちに、一緒に立ち去ってしまおうという、共謀にも似た想像上の誘いである。",
+      "en": "I have kept many animals, but I never name them — because even after life is gone, the name alone stays lodged in the heart like a nail.\nLet’s Run Away Together depicts a chicken encountered at a market — its feathers puffed almost like fur, its eyes carrying a wary alertness. I keep many animals, but I never name them. It is not because I don’t care; precisely the opposite — because I know exactly how much I would care that I deliberately avoid it. In some sense the chicken speaks this thought in my place — “let’s run away together” is an imagined, almost conspiratorial invitation: if neither of us can bear the eventual weight of being remembered, then let us leave together, while there is still time."
+    },
+    "sold": false,
+    "published": true,
+    "image": "works/lets-run-away-together-mreidlli.jpg?v=1783662130052",
+    "process": {
+      "description": {
+        "zh": "",
+        "jp": "",
+        "en": ""
+      },
+      "images": [],
+      "videos": []
+    }
   }
 ]
