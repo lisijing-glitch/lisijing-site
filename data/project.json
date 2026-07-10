@@ -1,14 +1,16 @@
 {
   "title": {
-    "zh": "",
-    "jp": "",
-    "en": ""
+    "zh": "还未被定义的生命",
+    "jp": "まだ誰にも定義されていない生命",
+    "en": " A Life Not Yet Defined"
   },
   "description": {
-    "zh": "",
-    "jp": "",
-    "en": ""
+    "zh": "《还未被定义的生命》是一件仍在生成的作品。它从不被视为完成，而是在与观看者的相遇中，不断被创作出来。\n作品从一幅画与一件手工制作的柔软立体物开始——这件立体也可以坐上去，让观者在停留之中进入画面。我邀请观者想象一种属于自己的生命：它不必真实存在，也不必符合任何规则，并把它画在纸上。这些画稿不会被覆盖到既有的画面之上；我把它们收集起来，以现在这幅画为起点，让作品向外延展，慢慢生长为一幅长卷。在每一段新延展出的画面里，我都会写入参与者的署名——无论真名、笔名、编号，还是留白。因此，这件作品无法只属于我一个人。\n我只使用天然的材料——矿物颜料与泥土。对我而言，它们不是表层，而是实体：是骨骼，是盛放记忆与时间的容器，是生命本身的元素。它们的缓慢与不可逆，赋予作品一种被时间累积过的质地。\n这一切之下，是一个信念：一个生命、一个人，永远不会被完全定义。我们始终身处生成的途中。《还未被定义的生命》，是我让一幅画依循同样道理活着的尝试——在与他人的关系中，不断地被创作出来。",
+    "jp": "「まだ誰にも定義されていない生命」は、今も生成し続けている作品です。完成したものとしてではなく、観る人との出会いの中で、絶えず作られ続けていきます。\n作品は、一枚の絵と、手で制作した柔らかい立体から始まります——この立体は腰かけることもでき、観る人は留まりながら画面の中へ入っていきます。私は観る人に、自分だけの生命を想像してほしいと願っています。実在する必要はなく、どんな規則にも縛られない生命を。そしてそれを紙に描いてもらいます。描かれた下絵を、私は既存の画面の上に塗り重ねることはしません。それらを集め、今のこの絵を起点として、作品を外へと延ばし、ゆっくりと一つの長い絵巻へと育てていきます。新たに延びていく画面には、参加した人たちの署名を書き入れます——本名でも、活動名でも、番号でも、あるいは空欄のままでも。ですからこの作品は、私一人のものにはなりえません。\n私が用いるのは、天然の素材——岩絵具と土だけです。私にとってそれらは表面ではなく、物質そのものです。骨であり、記憶と時間を納める器であり、生命そのものを形づくる要素です。その遅さと不可逆性が、作品に、時間が積み重なったような質感を与えます。\nそのすべての根底にあるのは、一つの確信です。一つの生命、一人の人間は、決して完全には定義されない、という確信。私たちは、いつも生成の途中にいます。「まだ誰にも定義されていない生命」は、絵画にも同じ原理で生きてもらおうとする試みです——他者との関係の中で、絶えず作られ続けていくために。",
+    "en": "A Life Not Yet Defined is a work kept in continual generation. It is never treated as finished, but is made again and again through encounters with those who view it.\nThe work begins with a painting and a soft, handmade three-dimensional form — one that can also be sat upon, so that the viewer enters the painting by staying with it. I invite viewers to imagine a living creature of their own — one that need not exist, that obeys no rule — and to draw it on paper. These drawings are not painted over the existing surface. Instead, I gather them and, taking the current painting as a point of departure, extend the work outward, letting it grow slowly into a long handscroll. Into each newly extended passage I inscribe the signatures of those who took part — a real name, a pen name, a number, or nothing at all. And so the work cannot belong to me alone.\nI work only with natural materials — mineral pigment and earth. For me these are not surfaces but substance: a skeleton, a vessel that holds memory and time, an element of life itself. Their slowness and irreversibility give the work its sense of accumulated duration.\nBeneath all of this lies a single conviction: that a life — a person — is never fully defined. We remain, always, in the middle of becoming. A Life Not Yet Defined is my attempt to let a painting live by that same principle — to be made, continually, in relation with others."
   },
-  "images": [],
+  "images": [
+    "works/gallery-1783691384134-w7go0.jpg"
+  ],
   "entries": []
 }
