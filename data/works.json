@@ -90,6 +90,11 @@
       "jp": "生命体—空気を踏み砕く",
       "en": "Life Form — Trampling the Air"
     },
+    "series": {
+      "zh": "",
+      "jp": "",
+      "en": ""
+    },
     "year": "2025",
     "size": "145 × 121 cm",
     "material": "岩絵具",
@@ -108,11 +113,40 @@
         "en": ""
       },
       "images": [
-        "works/process-1783653020223-vs48h.jpg",
-        "works/process-1783653029290-clsr7.jpg",
-        "works/process-1783653032239-8pzk1.jpg",
-        "works/process-1783653035738-xri61.jpg"
+        {
+          "src": "works/gallery-1783673102144-obne1.jpg",
+          "caption": {
+            "zh": "",
+            "jp": "",
+            "en": ""
+          }
+        },
+        {
+          "src": "works/gallery-1783673104933-88767.jpg",
+          "caption": {
+            "zh": "",
+            "jp": "",
+            "en": ""
+          }
+        },
+        {
+          "src": "works/gallery-1783673107696-4a1nq.jpg",
+          "caption": {
+            "zh": "",
+            "jp": "",
+            "en": ""
+          }
+        },
+        {
+          "src": "works/gallery-1783673110554-evbxw.jpg",
+          "caption": {
+            "zh": "",
+            "jp": "",
+            "en": ""
+          }
+        }
       ],
+      "exhibitionImages": [],
       "videos": []
     }
   },
