@@ -15,6 +15,22 @@
       "year": "2026",
       "category": "group",
       "published": true
+    },
+    {
+      "id": "next-station-new-mineral-pigments-an-exhibition-rebooting-a-thousand-years-of-color-mrew57hj",
+      "title": {
+        "zh": "下一站，新岩彩——重启千年色谱艺术展",
+        "jp": "次のステーション、新岩彩―千年の色譜を再起動するアート展",
+        "en": "“Next Station, New Mineral Pigments” — An Exhibition Rebooting a Thousand Years of Color"
+      },
+      "location": {
+        "zh": "广州",
+        "jp": "広州",
+        "en": "Guangzhou, China"
+      },
+      "year": "2026",
+      "category": "group",
+      "published": true
     }
   ]
 }
