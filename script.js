@@ -23,6 +23,7 @@
   };
   const META_LABELS = {
     year: { zh: "年份", jp: "制作年", en: "Year" },
+    series: { zh: "系列", jp: "シリーズ", en: "Series" },
     size: { zh: "尺寸", jp: "サイズ", en: "Size" },
     material: { zh: "材料", jp: "素材", en: "Material" },
   };
@@ -37,6 +38,34 @@
   const EMPTY_CV = { zh: "尚无展览记录。", jp: "展示履歴はまだありません。", en: "No exhibitions yet." };
   const NOT_FOUND = { zh: "未找到该作品。", jp: "作品が見つかりません。", en: "Work not found." };
   const PROCESS_LABEL = { zh: "创作过程", jp: "制作過程", en: "Process" };
+  const EXHIBITION_LABEL = { zh: "展览现场", jp: "展示風景", en: "Exhibition View" };
+
+  /* ---- Contact message form ----
+     Submits to Formspree (https://formspree.io) — a free third-party form
+     backend. No server of our own is involved, and no GitHub token is ever
+     exposed to site visitors. Replace the endpoint below with your own
+     Formspree form URL after creating a free account. */
+  const FORMSPREE_ENDPOINT = https://formspree.io/f/xdarqglq;
+
+  const MESSAGE_FORM_LABELS = {
+    name: { zh: "姓名", jp: "お名前", en: "Name" },
+    email: { zh: "邮箱", jp: "メールアドレス", en: "Email" },
+    subject: { zh: "主题", jp: "件名", en: "Subject" },
+    message: { zh: "留言", jp: "メッセージ", en: "Message" },
+    submit: { zh: "发送", jp: "送信する", en: "Send" },
+    sending: { zh: "发送中…", jp: "送信中…", en: "Sending…" },
+    success: { zh: "留言已发送，谢谢！", jp: "メッセージを送信しました。ありがとうございます。", en: "Message sent — thank you!" },
+    error: {
+      zh: "发送失败，请稍后再试，或直接发邮件联系。",
+      jp: "送信に失敗しました。しばらくしてから再度お試しいただくか、メールで直接ご連絡ください。",
+      en: "Something went wrong — please try again later, or email directly.",
+    },
+    notConfigured: {
+      zh: "留言功能尚未配置完成，请通过上方邮箱联系。",
+      jp: "メッセージフォームは準備中です。上記のメールでご連絡ください。",
+      en: "The message form isn't set up yet — please use the email above.",
+    },
+  };
   const WATCH_VIDEO_LABEL = { zh: "观看视频 ↗", jp: "動画を見る ↗", en: "Watch video ↗" };
 
   function buildVideoEmbed(entry) {
@@ -84,6 +113,23 @@
           .map((p) => `<p>${escapeHtml(p)}</p>`)
           .join("")
       : "";
+  }
+
+  function renderCaptionedGallery(items, altBase) {
+    const list = (items || []).filter((it) => it && it.src);
+    if (!list.length) return "";
+    return `<div class="gallery-grid">${list
+      .map((it, i) => {
+        const cap = pick(it.caption);
+        return `
+      <figure class="gallery-item">
+        <a class="gallery-image" href="${escapeHtml(it.src)}" target="_blank" rel="noopener">
+          <img src="${escapeHtml(it.src)}" alt="${escapeHtml(cap || altBase || "")} ${i + 1}" loading="lazy" onload="this.parentElement.style.aspectRatio=(this.naturalWidth/this.naturalHeight)">
+        </a>
+        ${cap ? `<figcaption class="gallery-caption">${escapeHtml(cap)}</figcaption>` : ""}
+      </figure>`;
+      })
+      .join("")}</div>`;
   }
 
   function pick(obj) {
@@ -169,6 +215,14 @@
       const key = h.dataset.i18nHeading;
       if (key && PAGE_TITLES[key]) h.textContent = pick(PAGE_TITLES[key]);
     });
+    document.querySelectorAll("[data-i18n-label]").forEach((el) => {
+      const key = el.dataset.i18nLabel;
+      if (key && MESSAGE_FORM_LABELS[key]) el.textContent = pick(MESSAGE_FORM_LABELS[key]);
+    });
+    document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
+      const key = el.dataset.i18nPlaceholder;
+      if (key && MESSAGE_FORM_LABELS[key]) el.placeholder = pick(MESSAGE_FORM_LABELS[key]);
+    });
 
     const siteName = pick(siteData.about.siteName) || "SIJING";
     const pageTitle = PAGE_TITLES[route.view] ? pick(PAGE_TITLES[route.view]) : "";
@@ -207,6 +261,16 @@
     links.innerHTML = items.join("");
   }
 
+  function groupBySeries(items) {
+    const map = new Map();
+    items.forEach((item) => {
+      const key = pick(item.series) || "";
+      if (!map.has(key)) map.set(key, []);
+      map.get(key).push(item);
+    });
+    return [...map.entries()];
+  }
+
   function renderWorksGrid() {
     const root = document.getElementById("works-list");
     const visible = siteData.works.filter((w) => w.published !== false);
@@ -223,24 +287,31 @@
           <span class="year-num">${escapeHtml(year)}</span>
           <div class="horizon-rule horizon-rule--tight"></div>
         </div>
-        <div class="works-grid">
-          ${items
-            .map(
-              (w) => `
-            <a class="work-card" href="#/works/${encodeURIComponent(w.id)}">
-              <div class="work-card-frame">
-                <img src="${escapeHtml(w.image || "")}" alt="${escapeHtml(pick(w.title))}" loading="lazy" onload="this.parentElement.style.aspectRatio=(this.naturalWidth/this.naturalHeight)">
-                ${w.sold ? `<span class="work-card-sold mono">${pick(STATUS_SOLD)}</span>` : ""}
-              </div>
-              <div class="work-card-caption">
-                <span class="title">${escapeHtml(pick(w.title))}</span>
-                <span class="year mono">${escapeHtml(w.year || "")}</span>
-              </div>
-            </a>
-          `
-            )
-            .join("")}
-        </div>
+        ${groupBySeries(items)
+          .map(
+            ([seriesName, seriesItems]) => `
+          ${seriesName ? `<div class="works-series-heading mono">${escapeHtml(seriesName)}</div>` : ""}
+          <div class="works-grid">
+            ${seriesItems
+              .map(
+                (w) => `
+              <a class="work-card" href="#/works/${encodeURIComponent(w.id)}">
+                <div class="work-card-frame">
+                  <img src="${escapeHtml(w.image || "")}" alt="${escapeHtml(pick(w.title))}" loading="lazy" onload="this.parentElement.style.aspectRatio=(this.naturalWidth/this.naturalHeight)">
+                  ${w.sold ? `<span class="work-card-sold mono">${pick(STATUS_SOLD)}</span>` : ""}
+                </div>
+                <div class="work-card-caption">
+                  <span class="title">${escapeHtml(pick(w.title))}</span>
+                  <span class="year mono">${escapeHtml(w.year || "")}</span>
+                </div>
+              </a>
+            `
+              )
+              .join("")}
+          </div>
+        `
+          )
+          .join("")}
       </div>
     `
       )
@@ -271,11 +342,14 @@
           .map((p) => `<p>${escapeHtml(p)}</p>`)
           .join("")
       : "";
-    const processImages = (work.process && Array.isArray(work.process.images) ? work.process.images : []).filter(Boolean);
+    const processImages = (work.process && Array.isArray(work.process.images) ? work.process.images : []).filter((it) => it && it.src);
+    const exhibitionImages = (work.process && Array.isArray(work.process.exhibitionImages) ? work.process.exhibitionImages : []).filter(
+      (it) => it && it.src
+    );
     const processVideos = (work.process && Array.isArray(work.process.videos) ? work.process.videos : []).filter(
       (v) => v && (v.src || v.url)
     );
-    const hasProcess = processDescHtml || processImages.length || processVideos.length;
+    const hasProcess = processDescHtml || processImages.length || exhibitionImages.length || processVideos.length;
 
     root.innerHTML = `
       <a href="#/works" class="work-detail-back mono">${pick(BACK_LABEL)}</a>
@@ -288,6 +362,7 @@
           <h1 class="work-detail-title">${escapeHtml(title)}</h1>
           <div class="work-detail-meta">
             <div class="row"><span class="label mono">${pick(META_LABELS.year)}</span><span>${escapeHtml(work.year || "")}</span></div>
+            ${pick(work.series) ? `<div class="row"><span class="label mono">${pick(META_LABELS.series)}</span><span>${escapeHtml(pick(work.series))}</span></div>` : ""}
             <div class="row"><span class="label mono">${pick(META_LABELS.size)}</span><span>${escapeHtml(work.size || "")}</span></div>
             <div class="row"><span class="label mono">${pick(META_LABELS.material)}</span><span>${escapeHtml(work.material || "")}</span></div>
           </div>
@@ -301,10 +376,18 @@
         <div class="horizon-rule"></div>
         <h2 class="view-heading eyebrow">${pick(PROCESS_LABEL)}</h2>
         ${processDescHtml ? `<div class="prose work-process-text">${processDescHtml}</div>` : ""}
-        ${renderGallery(processImages, `${title} — ${pick(PROCESS_LABEL)}`)}
+        ${renderCaptionedGallery(processImages, `${title} — ${pick(PROCESS_LABEL)}`)}
         ${
           processVideos.length
             ? `<div class="process-videos">${processVideos.map(buildVideoEmbed).join("")}</div>`
+            : ""
+        }
+        ${
+          exhibitionImages.length
+            ? `<h3 class="eyebrow" style="margin-top: var(--sp-4); margin-bottom: var(--sp-2);">${pick(EXHIBITION_LABEL)}</h3>${renderCaptionedGallery(
+                exhibitionImages,
+                `${title} — ${pick(EXHIBITION_LABEL)}`
+              )}`
             : ""
         }
       </div>
@@ -404,6 +487,48 @@
 
   /* ---- chrome: header scroll state + mobile nav ---- */
 
+  function initContactForm() {
+    const form = document.getElementById("contact-message-form");
+    if (!form) return;
+    const statusEl = document.getElementById("contact-message-status");
+    const submitBtn = document.getElementById("contact-message-submit");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      if (!FORMSPREE_ENDPOINT || FORMSPREE_ENDPOINT.indexOf("YOUR_FORM_ID") !== -1) {
+        statusEl.textContent = pick(MESSAGE_FORM_LABELS.notConfigured);
+        statusEl.dataset.state = "error";
+        return;
+      }
+      const originalLabel = submitBtn.textContent;
+      submitBtn.disabled = true;
+      submitBtn.textContent = pick(MESSAGE_FORM_LABELS.sending);
+      statusEl.textContent = "";
+      statusEl.removeAttribute("data-state");
+      try {
+        const res = await fetch(FORMSPREE_ENDPOINT, {
+          method: "POST",
+          headers: { Accept: "application/json" },
+          body: new FormData(form),
+        });
+        if (res.ok) {
+          statusEl.textContent = pick(MESSAGE_FORM_LABELS.success);
+          statusEl.dataset.state = "ok";
+          form.reset();
+        } else {
+          statusEl.textContent = pick(MESSAGE_FORM_LABELS.error);
+          statusEl.dataset.state = "error";
+        }
+      } catch (err) {
+        statusEl.textContent = pick(MESSAGE_FORM_LABELS.error);
+        statusEl.dataset.state = "error";
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalLabel;
+      }
+    });
+  }
+
   function initChrome() {
     const header = document.querySelector(".site-header");
     window.addEventListener(
@@ -499,6 +624,7 @@
     });
 
     initChrome();
+    initContactForm();
     initHorizonField();
     await loadData();
     render();

@@ -110,6 +110,28 @@
       <div class="horizon-rule horizon-rule--tight"></div>
       <div class="prose" id="contact-content"></div>
       <div class="contact-links" id="contact-links"></div>
+
+      <div class="horizon-rule"></div>
+      <form id="contact-message-form" class="message-form" novalidate>
+        <div class="field">
+          <label data-i18n-label="name" for="msg-name"></label>
+          <input type="text" id="msg-name" name="name" required>
+        </div>
+        <div class="field">
+          <label data-i18n-label="email" for="msg-email"></label>
+          <input type="email" id="msg-email" name="email" required>
+        </div>
+        <div class="field">
+          <label data-i18n-label="subject" for="msg-subject"></label>
+          <input type="text" id="msg-subject" name="subject">
+        </div>
+        <div class="field">
+          <label data-i18n-label="message" for="msg-message"></label>
+          <textarea id="msg-message" name="message" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" id="contact-message-submit" data-i18n-label="submit"></button>
+        <p class="message-form-status" id="contact-message-status" role="status"></p>
+      </form>
     </div>
   </section>
 
