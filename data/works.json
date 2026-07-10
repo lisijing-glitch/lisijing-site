@@ -98,6 +98,11 @@
       "jp": "鬼怖木―「生」シリーズ",
       "en": "“Ghost Willow” – Life Series"
     },
+    "series": {
+      "zh": "",
+      "jp": "",
+      "en": ""
+    },
     "year": "2024",
     "size": "30 × 40 cm",
     "material": "麻紙・泥岩・赤鉄鉱・胡粉などの鉱物顔料・動物性膠/Hemp paper, mudstone, hematite, gofun, mineral pigments, animal glue",
@@ -115,7 +120,42 @@
         "jp": "",
         "en": ""
       },
-      "images": [],
+      "images": [
+        {
+          "src": "works/gallery-1783688210428-vdh6l.jpg",
+          "caption": {
+            "zh": "",
+            "jp": "",
+            "en": ""
+          }
+        },
+        {
+          "src": "works/gallery-1783688233998-o6fon.jpg",
+          "caption": {
+            "zh": "",
+            "jp": "",
+            "en": ""
+          }
+        }
+      ],
+      "exhibitionImages": [
+        {
+          "src": "works/gallery-1783688247494-v1hci.jpg",
+          "caption": {
+            "zh": "",
+            "jp": "",
+            "en": ""
+          }
+        },
+        {
+          "src": "works/gallery-1783688250610-0czvs.jpg",
+          "caption": {
+            "zh": "",
+            "jp": "",
+            "en": ""
+          }
+        }
+      ],
       "videos": []
     }
   },
