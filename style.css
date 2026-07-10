@@ -325,7 +325,7 @@ main#view-root {
 .work-card { display: block; }
 .work-card-frame {
   position: relative;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 4 / 5; /* fallback before the image loads; JS then matches the image's real ratio so landscape works are never cropped */
   overflow: hidden;
   background: var(--surface);
 }
@@ -413,6 +413,92 @@ main#view-root {
   color: var(--warmth);
   border: 1px solid var(--warmth);
   padding: 0.3em 0.7em;
+}
+
+/* ==========================================================================
+   Generic image gallery — used by creative process, About/Statement/CV/
+   Research/Contact page images, and the long-term project section.
+   ========================================================================== */
+
+.work-process { margin-top: var(--sp-5); }
+.work-process-text { margin-bottom: var(--sp-4); }
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: var(--sp-3);
+  margin: var(--sp-3) 0 var(--sp-4);
+}
+.gallery-image {
+  display: block;
+  aspect-ratio: 4 / 3; /* fallback before the image loads and sets its real ratio */
+  overflow: hidden;
+  background: var(--surface);
+}
+.gallery-image img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s var(--ease);
+}
+.gallery-image:hover img { transform: scale(1.04); }
+
+@media (max-width: 720px) {
+  .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: var(--sp-2); }
+}
+
+.process-videos {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+  margin-top: var(--sp-3);
+}
+.process-video {
+  width: 100%;
+  max-height: 560px;
+  background: #000;
+}
+.process-video-embed {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+  background: #000;
+}
+.process-video-embed iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.process-video-link {
+  display: inline-block;
+  color: var(--warmth);
+  border-bottom: 1px solid var(--warmth);
+  padding-bottom: 0.2em;
+  width: fit-content;
+}
+.process-video-link:hover { color: var(--ink); border-color: var(--ink); }
+
+/* ==========================================================================
+   Long-term project — intro + running feed of dated entries
+   ========================================================================== */
+
+.project-entry {
+  margin-bottom: var(--sp-6);
+  padding-bottom: var(--sp-5);
+  border-bottom: 1px solid var(--surface);
+}
+.project-entry:last-child { border-bottom: 0; margin-bottom: 0; padding-bottom: 0; }
+.project-entry-date {
+  font-size: var(--text-xs);
+  letter-spacing: 0.1em;
+  color: var(--warmth);
+  margin-bottom: var(--sp-1);
+}
+.project-entry-title {
+  font-size: var(--text-lg);
+  font-weight: 600;
+  margin-bottom: var(--sp-2);
 }
 
 /* ==========================================================================

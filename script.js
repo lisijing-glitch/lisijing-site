@@ -17,6 +17,7 @@
     statement: { zh: "创作自述", jp: "ステートメント", en: "Statement" },
     works: { zh: "作品", jp: "作品", en: "Works" },
     cv: { zh: "履历", jp: "CV", en: "CV" },
+    project: { zh: "长期项目", jp: "長期プロジェクト", en: "Project" },
     research: { zh: "研究", jp: "リサーチ", en: "Research" },
     contact: { zh: "联系", jp: "コンタクト", en: "Contact" },
   };
@@ -63,6 +64,28 @@
     other: { zh: "其他", jp: "その他", en: "Other" },
   };
 
+  function renderGallery(images, altBase) {
+    if (!images || !images.length) return "";
+    return `<div class="gallery-grid">${images
+      .map(
+        (src, i) => `
+      <a class="gallery-image" href="${escapeHtml(src)}" target="_blank" rel="noopener">
+        <img src="${escapeHtml(src)}" alt="${escapeHtml(altBase || "")} ${i + 1}" loading="lazy" onload="this.parentElement.style.aspectRatio=(this.naturalWidth/this.naturalHeight)">
+      </a>`
+      )
+      .join("")}</div>`;
+  }
+
+  function textToParagraphs(text) {
+    return text
+      ? text
+          .split(/\n+/)
+          .filter(Boolean)
+          .map((p) => `<p>${escapeHtml(p)}</p>`)
+          .join("")
+      : "";
+  }
+
   function pick(obj) {
     if (!obj) return "";
     if (typeof obj === "string") return obj;
@@ -78,12 +101,18 @@
   /* ---- data ---- */
 
   async function loadData() {
-    const [works, cv, about] = await Promise.all([
+    const [works, cv, about, project] = await Promise.all([
       fetch("data/works.json", { cache: "no-store" }).then((r) => (r.ok ? r.json() : [])).catch(() => []),
       fetch("data/cv.json", { cache: "no-store" }).then((r) => (r.ok ? r.json() : { exhibitions: [] })).catch(() => ({ exhibitions: [] })),
       fetch("data/about.json", { cache: "no-store" }).then((r) => (r.ok ? r.json() : {})).catch(() => ({})),
+      fetch("data/project.json", { cache: "no-store" }).then((r) => (r.ok ? r.json() : {})).catch(() => ({})),
     ]);
-    siteData = { works: Array.isArray(works) ? works : [], cv: cv || { exhibitions: [] }, about: about || {} };
+    siteData = {
+      works: Array.isArray(works) ? works : [],
+      cv: cv || { exhibitions: [] },
+      about: about || {},
+      project: project || {},
+    };
   }
 
   function groupByYear(list, yearFn) {
@@ -103,7 +132,7 @@
     const parts = hash.split("/").filter(Boolean);
     if (parts.length === 0) return { view: "home" };
     if (parts[0] === "works" && parts[1]) return { view: "work-detail", id: decodeURIComponent(parts[1]) };
-    if (["about", "statement", "works", "cv", "research", "contact"].includes(parts[0])) {
+    if (["about", "statement", "works", "cv", "research", "contact", "project"].includes(parts[0])) {
       return { view: parts[0] };
     }
     return { view: "home" };
@@ -132,6 +161,7 @@
       works: renderWorksGrid,
       "work-detail": () => renderWorkDetail(route.id),
       cv: renderCV,
+      project: renderProject,
     };
     (renderers[route.view] || renderHome)();
 
@@ -161,7 +191,9 @@
 
   function renderProse(key) {
     const root = document.getElementById(`${key}-content`);
-    root.innerHTML = pick(siteData.about[key]) || "";
+    const section = siteData.about[key];
+    const images = section && Array.isArray(section.images) ? section.images : [];
+    root.innerHTML = `${pick(section) || ""}${renderGallery(images, pick(PAGE_TITLES[key]) || key)}`;
   }
 
   function renderContact() {
@@ -197,7 +229,7 @@
               (w) => `
             <a class="work-card" href="#/works/${encodeURIComponent(w.id)}">
               <div class="work-card-frame">
-                <img src="${escapeHtml(w.image || "")}" alt="${escapeHtml(pick(w.title))}" loading="lazy">
+                <img src="${escapeHtml(w.image || "")}" alt="${escapeHtml(pick(w.title))}" loading="lazy" onload="this.parentElement.style.aspectRatio=(this.naturalWidth/this.naturalHeight)">
                 ${w.sold ? `<span class="work-card-sold mono">${pick(STATUS_SOLD)}</span>` : ""}
               </div>
               <div class="work-card-caption">
@@ -269,20 +301,7 @@
         <div class="horizon-rule"></div>
         <h2 class="view-heading eyebrow">${pick(PROCESS_LABEL)}</h2>
         ${processDescHtml ? `<div class="prose work-process-text">${processDescHtml}</div>` : ""}
-        ${
-          processImages.length
-            ? `<div class="process-gallery">
-                ${processImages
-                  .map(
-                    (src, i) => `
-                  <a class="process-image" href="${escapeHtml(src)}" target="_blank" rel="noopener">
-                    <img src="${escapeHtml(src)}" alt="${escapeHtml(title)} — ${pick(PROCESS_LABEL)} ${i + 1}" loading="lazy">
-                  </a>`
-                  )
-                  .join("")}
-              </div>`
-            : ""
-        }
+        ${renderGallery(processImages, `${title} — ${pick(PROCESS_LABEL)}`)}
         ${
           processVideos.length
             ? `<div class="process-videos">${processVideos.map(buildVideoEmbed).join("")}</div>`
@@ -295,7 +314,47 @@
     `;
   }
 
+  function renderProject() {
+    const project = siteData.project || {};
+    const introRoot = document.getElementById("project-intro");
+    const introDesc = textToParagraphs(pick(project.description));
+    const introImages = Array.isArray(project.images) ? project.images : [];
+    const projectTitle = pick(project.title);
+    introRoot.innerHTML = `
+      ${projectTitle ? `<h2 class="work-detail-title" style="margin-bottom: var(--sp-3);">${escapeHtml(projectTitle)}</h2>` : ""}
+      ${introDesc ? `<div class="prose">${introDesc}</div>` : ""}
+      ${renderGallery(introImages, projectTitle || pick(PAGE_TITLES.project))}
+    `;
+
+    const entriesRoot = document.getElementById("project-entries");
+    const entries = (Array.isArray(project.entries) ? project.entries : []).filter((e) => e.published !== false);
+    if (!entries.length) {
+      entriesRoot.innerHTML = "";
+      return;
+    }
+    entriesRoot.innerHTML = `
+      <div class="horizon-rule"></div>
+      ${entries
+        .map((e) => {
+          const t = pick(e.title);
+          const desc = textToParagraphs(pick(e.description));
+          const images = Array.isArray(e.images) ? e.images : [];
+          return `
+        <article class="project-entry">
+          ${e.date ? `<div class="project-entry-date mono">${escapeHtml(e.date)}</div>` : ""}
+          ${t ? `<h3 class="project-entry-title">${escapeHtml(t)}</h3>` : ""}
+          ${desc ? `<div class="prose">${desc}</div>` : ""}
+          ${renderGallery(images, t)}
+        </article>
+      `;
+        })
+        .join("")}
+    `;
+  }
+
   function renderCV() {
+    const galleryRoot = document.getElementById("cv-gallery");
+    if (galleryRoot) galleryRoot.innerHTML = renderGallery(siteData.cv.images, pick(PAGE_TITLES.cv));
     const root = document.getElementById("cv-list");
     const list = (siteData.cv.exhibitions || []).filter((e) => e.published !== false);
     if (!list.length) {
