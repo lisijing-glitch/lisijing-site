@@ -146,5 +146,33 @@
       ],
       "videos": []
     }
+  },
+  {
+    "id": "midway-mredurnf",
+    "title": {
+      "zh": "Ⅱ 途中",
+      "jp": "Ⅱ「途中」",
+      "en": "Ⅱ“Midway”"
+    },
+    "year": "2026",
+    "size": "25.7 × 18.2 × 2.0 cm",
+    "material": "木製パネル、雲肌麻紙、岩絵具、練り絵具、胡粉                    |",
+    "description": {
+      "zh": "存在本身始终在变化——没有终点，也没有到达。\n本作描绘的是存在在时间与空间之间不断移动、持续变化的状态。对我而言，身体从来不是一个固定的轮廓，而是在与环境、与他者的关系中被不断重新生成的东西。画面里出现的那些不规则形态，不是彼此独立的存在，而是相互影响，维持着一种暂时的均衡。第二幕题为”途中”，但这并不是指从某一个地点前往另一个地点的过程——它指的是：存在本身，始终处于变化之中，这件事本身。在这里，没有完成，也没有抵达，只有持续不断的、正在发生的转变。",
+      "jp": "存在そのものが常に変化し続けている——完成も到達も存在しない。\n本作では、存在が時間と空間のあいだを移動しながら変化し続ける状態を描いています。私にとって身体とは固定された輪郭ではなく、環境や他者との関係によって絶えず生成されるものです。画面に現れる不規則な形態は、それぞれが独立した存在ではなく、互いに影響し合いながら一時的な均衡を保っています。第二幕「途中」とは、ある地点から別の地点へ向かう過程ではありません。存在そのものが常に変化し続ける状態を意味しています。そこには完成も到達も存在しません。",
+      "en": "Being itself never stops changing — there is no completion, no arrival.\nThis work depicts a being that keeps moving, and keeps changing, between time and space. For me, the body has never been a fixed outline, but something continually regenerated through its relation to environment and to others. The irregular forms that appear on the picture plane are not independent beings but sustain a temporary equilibrium through mutual influence. The second movement is titled “Midway,” but this does not describe a passage from one point toward another — it names the fact that being itself is always in the midst of changing. There is no completion here, no arrival; only a transformation that keeps happening."
+    },
+    "sold": false,
+    "published": true,
+    "image": "works/midway-mredurnf.jpg?v=1783654536804",
+    "process": {
+      "description": {
+        "zh": "",
+        "jp": "",
+        "en": ""
+      },
+      "images": [],
+      "videos": []
+    }
   }
 ]
