@@ -249,6 +249,11 @@
       "jp": "Ⅲ「あとひとつ」",
       "en": "Ⅲ “One More”"
     },
+    "series": {
+      "zh": "系列 ——『小蚂蚁想要西瓜尖尖上那一点点的甜』三部曲",
+      "jp": "系列  ——『ちいさな蟻は、スイカの先っぽのほんの少しの甘さがほしかった』三部曲",
+      "en": "The Little Ant Only Wanted a Little Sweetness at the Tip of the Watermelon"
+    },
     "year": "2026",
     "size": "25.7 × 18.2 × 2.0 cm",
     "material": "木製パネル、雲肌麻紙、岩絵具、練り絵具、胡粉",
@@ -267,10 +272,40 @@
         "en": ""
       },
       "images": [
-        "works/process-1783655196269-02isq.jpg",
-        "works/process-1783655202237-01999.jpg",
-        "works/process-1783655207450-92swm.jpg"
+        {
+          "src": "works/gallery-1783672896582-jjih1.jpg",
+          "caption": {
+            "zh": "",
+            "jp": "",
+            "en": ""
+          }
+        },
+        {
+          "src": "works/gallery-1783672899300-jbnb5.jpg",
+          "caption": {
+            "zh": "",
+            "jp": "",
+            "en": ""
+          }
+        },
+        {
+          "src": "works/gallery-1783672901779-fp468.jpg",
+          "caption": {
+            "zh": "",
+            "jp": "",
+            "en": ""
+          }
+        },
+        {
+          "src": "works/gallery-1783672904263-drbwd.jpg",
+          "caption": {
+            "zh": "",
+            "jp": "",
+            "en": ""
+          }
+        }
       ],
+      "exhibitionImages": [],
       "videos": []
     }
   },
