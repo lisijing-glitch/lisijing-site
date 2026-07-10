@@ -607,5 +607,39 @@
       "images": [],
       "videos": []
     }
+  },
+  {
+    "id": "letting-all-things-pass-through-the-body-ii-mreyqxse",
+    "title": {
+      "zh": "万物从身体穿过(II)",
+      "jp": "万物を身に通す (II)",
+      "en": "Letting All Things Pass Through the Body (II)"
+    },
+    "series": {
+      "zh": "",
+      "jp": "",
+      "en": ""
+    },
+    "year": "2025",
+    "size": "53.0×45.5cm",
+    "material": "紙本墨彩・岩絵具・顔彩・動物膠",
+    "description": {
+      "zh": "同一命题的第二次尝试——蜷缩缠绕",
+      "jp": "同じ主題への二度目の試み——丸まり絡み合い、筆致はより奔放。",
+      "en": "A second attempt at the same proposition — curled and tangled, the brushwork more unrestrained."
+    },
+    "sold": false,
+    "published": true,
+    "image": "works/letting-all-things-pass-through-the-body-ii-mreyqxse.jpg?v=1783689628484",
+    "process": {
+      "description": {
+        "zh": "",
+        "jp": "",
+        "en": ""
+      },
+      "images": [],
+      "exhibitionImages": [],
+      "videos": []
+    }
   }
 ]
