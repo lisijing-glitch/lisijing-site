@@ -22,8 +22,16 @@
   const qs = (sel, root = document) => root.querySelector(sel);
   const qsa = (sel, root = document) => Array.from(root.querySelectorAll(sel));
 
-  const state = { works: [], cv: [], about: {}, worksLoaded: false, cvLoaded: false, pagesLoaded: false };
-  let currentProcessImages = [];
+  const state = {
+    works: [],
+    cv: [],
+    about: {},
+    project: null,
+    worksLoaded: false,
+    cvLoaded: false,
+    pagesLoaded: false,
+    projectLoaded: false,
+  };
   let currentProcessVideos = [];
 
   /* ---- small utilities ---- */
@@ -280,58 +288,82 @@
     });
   }
 
-  /* ---- creative process: multi-image gallery ---- */
+  /* ---- generic multi-image gallery manager (reused by: creative process,
+     About/Statement/CV/Research/Contact page images, long-term project) ---- */
 
-  function renderProcessImageList() {
-    const listEl = qs("#process-image-list");
-    if (!listEl) return;
-    if (!currentProcessImages.length) {
-      listEl.innerHTML = '<p class="field-hint">还没有创作过程图片。</p>';
-      return;
-    }
-    listEl.innerHTML = currentProcessImages
-      .map(
-        (src, i) => `
+  function makeGalleryManager(dropId, inputId, listId) {
+    let images = [];
+
+    function render() {
+      const listEl = qs("#" + listId);
+      if (!listEl) return;
+      if (!images.length) {
+        listEl.innerHTML = '<p class="field-hint">还没有图片。</p>';
+        return;
+      }
+      listEl.innerHTML = images
+        .map(
+          (src, i) => `
         <div class="entry-row">
           <img src="../${escapeHtml(src)}" alt="" onerror="this.style.visibility='hidden'">
           <div class="info"><div class="t">图 ${i + 1}</div></div>
           <div class="actions">
-            <button type="button" data-del-process-image="${i}">删除</button>
+            <button type="button" data-del="${i}">删除</button>
           </div>
         </div>`
-      )
-      .join("");
-    qsa("[data-del-process-image]", listEl).forEach((b) =>
-      b.addEventListener("click", () => {
-        currentProcessImages.splice(Number(b.dataset.delProcessImage), 1);
-        renderProcessImageList();
-      })
-    );
+        )
+        .join("");
+      qsa("[data-del]", listEl).forEach((b) =>
+        b.addEventListener("click", () => {
+          images.splice(Number(b.dataset.del), 1);
+          render();
+        })
+      );
+    }
+
+    function wire() {
+      const drop = qs("#" + dropId),
+        input = qs("#" + inputId);
+      if (!drop || !input) return;
+      drop.addEventListener("click", () => input.click());
+      input.addEventListener("change", async () => {
+        const files = Array.from(input.files || []);
+        if (!files.length) return;
+        for (const file of files) {
+          try {
+            toast("正在压缩并上传图片…");
+            const { base64 } = await fileToResizedBase64(file, 1800, 0.82);
+            const path = `works/gallery-${Date.now()}-${Math.random().toString(36).slice(2, 7)}.jpg`;
+            await ghPutFile(path, base64, `配图: ${path}`, null, true);
+            images.push(path);
+            render();
+          } catch (err) {
+            toast("上传失败：" + err.message, "error");
+          }
+        }
+        input.value = "";
+      });
+    }
+
+    return {
+      get: () => images,
+      set: (arr) => {
+        images = Array.isArray(arr) ? arr.filter(Boolean) : [];
+        render();
+      },
+      wire,
+      render,
+    };
   }
 
-  function wireProcessImageUpload() {
-    const drop = qs("#process-image-drop"),
-      input = qs("#process-image-input");
-    if (!drop || !input) return;
-    drop.addEventListener("click", () => input.click());
-    input.addEventListener("change", async () => {
-      const files = Array.from(input.files || []);
-      if (!files.length) return;
-      for (const file of files) {
-        try {
-          toast(`正在压缩并上传创作过程图片…（${file.name}）`);
-          const { base64 } = await fileToResizedBase64(file, 1800, 0.82);
-          const path = `works/process-${Date.now()}-${Math.random().toString(36).slice(2, 7)}.jpg`;
-          await ghPutFile(path, base64, `创作过程图片: ${path}`, null, true);
-          currentProcessImages.push(path);
-          renderProcessImageList();
-        } catch (err) {
-          toast("上传失败：" + err.message, "error");
-        }
-      }
-      input.value = "";
-    });
-  }
+  const processGallery = makeGalleryManager("process-image-drop", "process-image-input", "process-image-list");
+  const aboutGallery = makeGalleryManager("about-image-drop", "about-image-input", "about-image-list");
+  const statementGallery = makeGalleryManager("statement-image-drop", "statement-image-input", "statement-image-list");
+  const researchGallery = makeGalleryManager("research-image-drop", "research-image-input", "research-image-list");
+  const contactGallery = makeGalleryManager("contact-image-drop", "contact-image-input", "contact-image-list");
+  const cvGallery = makeGalleryManager("cv-image-drop", "cv-image-input", "cv-image-list");
+  const projectIntroGallery = makeGalleryManager("project-image-drop", "project-image-input", "project-image-list");
+  const projectEntryGallery = makeGalleryManager("project-entry-image-drop", "project-entry-image-input", "project-entry-image-list");
 
   /* ---- creative process: videos (raw upload, no resize) ---- */
 
@@ -530,9 +562,8 @@
     qs('input[name="work-sold"][value="false"]').checked = true;
     qs('input[name="work-published"][value="true"]').checked = true;
     writeTriple("work-process-desc", {});
-    currentProcessImages = [];
+    processGallery.set([]);
     currentProcessVideos = [];
-    renderProcessImageList();
     renderProcessVideoList();
   }
 
@@ -557,11 +588,10 @@
     }
     qs("#work-image-input").value = "";
     writeTriple("work-process-desc", w.process && w.process.description);
-    currentProcessImages = (w.process && Array.isArray(w.process.images) ? [...w.process.images] : []).filter(Boolean);
+    processGallery.set(w.process && Array.isArray(w.process.images) ? w.process.images : []);
     currentProcessVideos = (w.process && Array.isArray(w.process.videos) ? [...w.process.videos] : []).filter(
       (v) => v && (v.src || v.url)
     );
-    renderProcessImageList();
     renderProcessVideoList();
     qs("#work-form-title").textContent = "编辑作品";
     qs("#work-cancel-edit").hidden = false;
@@ -617,7 +647,7 @@
         image: imagePath,
         process: {
           description: readTriple("work-process-desc"),
-          images: currentProcessImages.filter(Boolean),
+          images: processGallery.get(),
           videos: currentProcessVideos.filter((v) => v && (v.src || v.url)),
         },
       };
@@ -661,6 +691,7 @@
       const data = file ? JSON.parse(file.content) : { exhibitions: [] };
       state.cv = data.exhibitions || [];
       state.cvLoaded = true;
+      cvGallery.set(data.images);
       if (!state.cv.length) {
         listEl.innerHTML = '<p class="field-hint">还没有履历记录，填写上方表单新增第一条。</p>';
         return;
@@ -686,6 +717,21 @@
       qsa("[data-del-cv]", listEl).forEach((b) => b.addEventListener("click", () => deleteCv(b.dataset.delCv)));
     } catch (err) {
       listEl.innerHTML = `<p class="field-hint">读取失败：${escapeHtml(err.message)}</p>`;
+    }
+  }
+
+  async function saveCvImages() {
+    setBusy(true, "save-cv-images-btn");
+    try {
+      const remote = await ghGetFile("data/cv.json");
+      const data = remote ? JSON.parse(remote.content) : { exhibitions: [] };
+      data.images = cvGallery.get();
+      await ghPutFile("data/cv.json", JSON.stringify(data, null, 2), "更新履历页面配图", remote ? remote.sha : null, false);
+      toast("配图已保存，网站将在数分钟内自动更新。");
+    } catch (err) {
+      toast("保存失败：" + err.message, "error");
+    } finally {
+      setBusy(false, "save-cv-images-btn");
     }
   }
 
@@ -771,6 +817,192 @@
   }
 
   /* ==========================================================================
+     Long-term project — intro + a manually-ordered feed of dated entries
+     ========================================================================== */
+
+  async function loadProjectData() {
+    if (configIncomplete()) {
+      const listEl = qs("#project-entry-list");
+      if (listEl) listEl.innerHTML = FIRST_RUN_HINT;
+      return;
+    }
+    try {
+      const remote = await ghGetFile("data/project.json");
+      const data = remote ? JSON.parse(remote.content) : { title: {}, description: {}, images: [], entries: [] };
+      state.project = data;
+      state.projectLoaded = true;
+
+      writeTriple("project-title", data.title);
+      writeTriple("project-desc", data.description);
+      projectIntroGallery.set(data.images);
+      renderProjectEntryList();
+    } catch (err) {
+      toast("长期项目数据读取失败：" + err.message, "error");
+    }
+  }
+
+  async function saveProjectIntro() {
+    setBusy(true, "save-project-intro-btn");
+    try {
+      const remote = await ghGetFile("data/project.json");
+      const data = remote ? JSON.parse(remote.content) : { title: {}, description: {}, images: [], entries: [] };
+      data.title = readTriple("project-title");
+      data.description = readTriple("project-desc");
+      data.images = projectIntroGallery.get();
+      if (!Array.isArray(data.entries)) data.entries = [];
+      await ghPutFile("data/project.json", JSON.stringify(data, null, 2), "更新长期项目介绍", remote ? remote.sha : null, false);
+      state.project = data;
+      toast("已保存，网站将在数分钟内自动更新。");
+    } catch (err) {
+      toast("保存失败：" + err.message, "error");
+    } finally {
+      setBusy(false, "save-project-intro-btn");
+    }
+  }
+
+  function renderProjectEntryList() {
+    const listEl = qs("#project-entry-list");
+    if (!listEl) return;
+    if (configIncomplete()) {
+      listEl.innerHTML = FIRST_RUN_HINT;
+      return;
+    }
+    const entries = (state.project && Array.isArray(state.project.entries)) ? state.project.entries : [];
+    if (!entries.length) {
+      listEl.innerHTML = '<p class="field-hint">还没有更新记录，填写上方表单新增第一条。</p>';
+      return;
+    }
+    listEl.innerHTML = entries
+      .map((e, idx) => {
+        const t = (e.title && (e.title.zh || e.title.en || e.title.jp)) || "（未命名）";
+        const tag = e.published === false ? "草稿" : "公开";
+        return `
+        <div class="entry-row">
+          <div class="info">
+            <div class="t">${escapeHtml(t)}</div>
+            <div class="m">${escapeHtml(e.date || "")} · ${tag}</div>
+          </div>
+          <div class="actions">
+            <button type="button" data-move-project-up="${escapeHtml(e.id)}" ${idx === 0 ? "disabled" : ""}>↑</button>
+            <button type="button" data-move-project-down="${escapeHtml(e.id)}" ${idx === entries.length - 1 ? "disabled" : ""}>↓</button>
+            <button type="button" data-edit-project="${escapeHtml(e.id)}">编辑</button>
+            <button type="button" data-del-project="${escapeHtml(e.id)}">删除</button>
+          </div>
+        </div>`;
+      })
+      .join("");
+    qsa("[data-edit-project]", listEl).forEach((b) => b.addEventListener("click", () => editProjectEntry(b.dataset.editProject)));
+    qsa("[data-del-project]", listEl).forEach((b) => b.addEventListener("click", () => deleteProjectEntry(b.dataset.delProject)));
+    qsa("[data-move-project-up]", listEl).forEach((b) => b.addEventListener("click", () => moveProjectEntry(b.dataset.moveProjectUp, -1)));
+    qsa("[data-move-project-down]", listEl).forEach((b) => b.addEventListener("click", () => moveProjectEntry(b.dataset.moveProjectDown, 1)));
+  }
+
+  function resetProjectEntryForm() {
+    qs("#project-entry-form").reset();
+    qs("#project-entry-editing-id").value = "";
+    qs("#project-entry-date").value = "";
+    qs("#project-entry-form-title").textContent = "新增更新";
+    qs("#project-entry-cancel-edit").hidden = true;
+    qs('input[name="project-entry-published"][value="true"]').checked = true;
+    writeTriple("project-entry-title", {});
+    writeTriple("project-entry-desc", {});
+    projectEntryGallery.set([]);
+  }
+
+  function editProjectEntry(id) {
+    const entries = (state.project && state.project.entries) || [];
+    const e = entries.find((x) => x.id === id);
+    if (!e) return;
+    qs("#project-entry-editing-id").value = e.id;
+    qs("#project-entry-date").value = e.date || "";
+    writeTriple("project-entry-title", e.title);
+    writeTriple("project-entry-desc", e.description);
+    projectEntryGallery.set(Array.isArray(e.images) ? e.images : []);
+    (qs(`input[name="project-entry-published"][value="${e.published === false ? "false" : "true"}"]`) || {}).checked = true;
+    qs("#project-entry-form-title").textContent = "编辑更新";
+    qs("#project-entry-cancel-edit").hidden = false;
+    qs("#project-entry-form").scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  async function deleteProjectEntry(id) {
+    if (!confirm("确定删除这条更新记录吗？")) return;
+    try {
+      const remote = await ghGetFile("data/project.json");
+      const data = remote ? JSON.parse(remote.content) : { title: {}, description: {}, images: [], entries: [] };
+      data.entries = (data.entries || []).filter((e) => e.id !== id);
+      await ghPutFile("data/project.json", JSON.stringify(data, null, 2), `删除长期项目更新: ${id}`, remote ? remote.sha : null, false);
+      state.project = data;
+      toast("已删除。");
+      renderProjectEntryList();
+    } catch (err) {
+      toast("删除失败：" + err.message, "error");
+    }
+  }
+
+  async function moveProjectEntry(id, direction) {
+    try {
+      const remote = await ghGetFile("data/project.json");
+      const data = remote ? JSON.parse(remote.content) : { title: {}, description: {}, images: [], entries: [] };
+      const entries = data.entries || [];
+      const idx = entries.findIndex((e) => e.id === id);
+      const target = idx + direction;
+      if (idx === -1 || target < 0 || target >= entries.length) return;
+      [entries[idx], entries[target]] = [entries[target], entries[idx]];
+      data.entries = entries;
+      await ghPutFile("data/project.json", JSON.stringify(data, null, 2), `调整长期项目更新顺序: ${id}`, remote ? remote.sha : null, false);
+      state.project = data;
+      renderProjectEntryList();
+      toast("顺序已调整，网站将在数分钟内自动更新。");
+    } catch (err) {
+      toast("调整顺序失败：" + err.message, "error");
+    }
+  }
+
+  async function saveProjectEntry(evt) {
+    evt.preventDefault();
+    setBusy(true, "project-entry-save-btn");
+    try {
+      const editingId = qs("#project-entry-editing-id").value;
+      const title = readTriple("project-entry-title");
+      const remote = await ghGetFile("data/project.json");
+      const data = remote ? JSON.parse(remote.content) : { title: {}, description: {}, images: [], entries: [] };
+      const entries = data.entries || [];
+
+      const id = editingId || makeId(title.en || title.zh || title.jp || "update");
+      const entryObj = {
+        id,
+        date: qs("#project-entry-date").value.trim(),
+        title,
+        description: readTriple("project-entry-desc"),
+        images: projectEntryGallery.get(),
+        published: qs('input[name="project-entry-published"]:checked').value === "true",
+      };
+
+      const idx = entries.findIndex((e) => e.id === editingId);
+      if (idx > -1) entries[idx] = entryObj;
+      else entries.push(entryObj);
+      data.entries = entries;
+
+      await ghPutFile(
+        "data/project.json",
+        JSON.stringify(data, null, 2),
+        `${idx > -1 ? "更新" : "新增"}长期项目更新: ${title.zh || title.en || title.jp || id}`,
+        remote ? remote.sha : null,
+        false
+      );
+
+      state.project = data;
+      toast("已保存，网站将在数分钟内自动更新。");
+      resetProjectEntryForm();
+      renderProjectEntryList();
+    } catch (err) {
+      toast("保存失败：" + err.message, "error");
+    } finally {
+      setBusy(false, "project-entry-save-btn");
+    }
+  }
+
+  /* ==========================================================================
      Pages (Home / About / Statement / Research / Contact)
      ========================================================================== */
 
@@ -804,6 +1036,10 @@
       qs("#contact-email").value = (data.contact && data.contact.email) || "";
       qs("#contact-instagram").value = (data.contact && data.contact.instagram) || "";
       qs("#contact-other").value = (data.contact && data.contact.other) || "";
+      aboutGallery.set(data.about && data.about.images);
+      statementGallery.set(data.statement && data.statement.images);
+      researchGallery.set(data.research && data.research.images);
+      contactGallery.set(data.contact && data.contact.images);
 
       if (statusEl) statusEl.textContent = "已载入当前网站内容。";
     } catch (err) {
@@ -836,9 +1072,13 @@
         contact.email = qs("#contact-email").value.trim();
         contact.instagram = qs("#contact-instagram").value.trim();
         contact.other = qs("#contact-other").value.trim();
+        contact.images = contactGallery.get();
         data.contact = contact;
       } else {
-        data[pageKey] = readTripleRTE(pageKey);
+        const pageObj = readTripleRTE(pageKey);
+        const pageGalleries = { about: aboutGallery, statement: statementGallery, research: researchGallery };
+        if (pageGalleries[pageKey]) pageObj.images = pageGalleries[pageKey].get();
+        data[pageKey] = pageObj;
       }
 
       await ghPutFile("data/about.json", JSON.stringify(data, null, 2), `更新页面内容: ${pageKey}`, remote ? remote.sha : null, false);
@@ -859,8 +1099,22 @@
     wireRTEToolbars();
     wireImageDrop("work-image-drop", "work-image-input", "work-image-preview");
     wireImageDrop("home-image-drop", "home-image-input", "home-image-preview");
-    wireProcessImageUpload();
-    renderProcessImageList();
+    processGallery.wire();
+    processGallery.render();
+    aboutGallery.wire();
+    aboutGallery.render();
+    statementGallery.wire();
+    statementGallery.render();
+    researchGallery.wire();
+    researchGallery.render();
+    contactGallery.wire();
+    contactGallery.render();
+    cvGallery.wire();
+    cvGallery.render();
+    projectIntroGallery.wire();
+    projectIntroGallery.render();
+    projectEntryGallery.wire();
+    projectEntryGallery.render();
     wireProcessVideoUpload();
     renderProcessVideoList();
 
@@ -903,6 +1157,13 @@
     /* cv */
     qs("#cv-form").addEventListener("submit", saveCv);
     qs("#cv-cancel-edit").addEventListener("click", resetCvForm);
+    qs("#save-cv-images-btn").addEventListener("click", saveCvImages);
+
+    /* long-term project */
+    qs("#save-project-intro-btn").addEventListener("click", saveProjectIntro);
+    qs("#project-entry-form").addEventListener("submit", saveProjectEntry);
+    qs("#project-entry-cancel-edit").addEventListener("click", resetProjectEntryForm);
+    qs("#project-entry-refresh-btn").addEventListener("click", loadProjectData);
 
     /* pages */
     qsa("[data-save-page]").forEach((btn) => btn.addEventListener("click", () => savePage(btn.dataset.savePage)));
@@ -913,6 +1174,7 @@
     mainGroup.addEventListener("tabchange", (e) => {
       if (e.detail.key === "works" && !state.worksLoaded) loadWorksList();
       if (e.detail.key === "cv" && !state.cvLoaded) loadCvList();
+      if (e.detail.key === "project" && !state.projectLoaded) loadProjectData();
       if (e.detail.key === "pages" && !state.pagesLoaded) loadPagesData();
     });
     qs("#works-refresh-btn").addEventListener("click", loadWorksList);

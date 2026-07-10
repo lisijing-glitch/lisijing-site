@@ -26,6 +26,7 @@
   <nav class="admin-tabs">
     <button type="button" class="admin-tab is-active" data-tab-target="works">作品</button>
     <button type="button" class="admin-tab" data-tab-target="cv">履历 CV</button>
+    <button type="button" class="admin-tab" data-tab-target="project">长期项目</button>
     <button type="button" class="admin-tab" data-tab-target="pages">文字页面</button>
     <button type="button" class="admin-tab" data-tab-target="settings">设置</button>
   </nav>
@@ -164,6 +165,16 @@
   <!-- ==================== 履历 CV ==================== -->
   <div class="admin-panel" data-tab-panel="cv" hidden>
 
+    <div class="admin-card">
+      <h2 class="admin-title" style="font-size: var(--text-md); margin-bottom: var(--sp-3);">履历页面配图（可多张，可留空）</h2>
+      <div class="image-drop" id="cv-image-drop">点击选择图片</div>
+      <input type="file" id="cv-image-input" accept="image/*" multiple hidden>
+      <div class="entry-list" id="cv-image-list"></div>
+      <div class="btn-row" style="margin-top: var(--sp-3);">
+        <button type="button" class="btn btn-primary" id="save-cv-images-btn">保存配图</button>
+      </div>
+    </div>
+
     <form class="admin-card" id="cv-form">
       <h2 class="admin-title" id="cv-form-title" style="font-size: var(--text-md); margin-bottom: var(--sp-3);">新增履历</h2>
       <input type="hidden" id="cv-editing-id">
@@ -227,6 +238,124 @@
         <button type="button" class="btn btn-ghost" id="cv-refresh-btn">刷新列表</button>
       </div>
       <div class="entry-list" id="cv-entry-list">
+        <p class="field-hint">连接 GitHub 后自动加载。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 长期项目 ==================== -->
+  <div class="admin-panel" data-tab-panel="project" hidden>
+
+    <div class="admin-card">
+      <h2 class="admin-title" style="font-size: var(--text-md); margin-bottom: var(--sp-3);">项目介绍</h2>
+
+      <div class="field">
+        <label>项目名称（三语，可留空）</label>
+        <div class="field-row">
+          <input type="text" data-field="project-title.zh" placeholder="中文 · 例：无法被定义的生命">
+          <input type="text" data-field="project-title.jp" placeholder="日本語">
+        </div>
+        <div style="margin-top: var(--sp-1);">
+          <input type="text" data-field="project-title.en" placeholder="English" style="width:100%; border:1px solid var(--surface); background:var(--paper); padding:0.7em 0.8em; font-size:var(--text-sm); font-family:var(--font-serif);">
+        </div>
+      </div>
+
+      <div class="field" data-tab-group="project-desc-langs">
+        <label>项目介绍文字（三语，可留空）</label>
+        <div class="lang-tabs">
+          <button type="button" class="lang-tab is-active" data-tab-target="zh">中文</button>
+          <button type="button" class="lang-tab" data-tab-target="jp">日本語</button>
+          <button type="button" class="lang-tab" data-tab-target="en">English</button>
+        </div>
+        <div class="lang-panel" data-tab-panel="zh">
+          <textarea data-field="project-desc.zh" placeholder="中文介绍…（换行会自动分段）"></textarea>
+        </div>
+        <div class="lang-panel" data-tab-panel="jp" hidden>
+          <textarea data-field="project-desc.jp" placeholder="日本語の紹介…"></textarea>
+        </div>
+        <div class="lang-panel" data-tab-panel="en" hidden>
+          <textarea data-field="project-desc.en" placeholder="Project introduction…"></textarea>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>项目配图（可多张，可留空）</label>
+        <div class="image-drop" id="project-image-drop">点击选择图片</div>
+        <input type="file" id="project-image-input" accept="image/*" multiple hidden>
+        <div class="entry-list" id="project-image-list"></div>
+      </div>
+
+      <div class="btn-row">
+        <button type="button" class="btn btn-primary" id="save-project-intro-btn">保存项目介绍</button>
+      </div>
+    </div>
+
+    <form class="admin-card" id="project-entry-form">
+      <h2 class="admin-title" id="project-entry-form-title" style="font-size: var(--text-md); margin-bottom: var(--sp-3);">新增更新</h2>
+      <input type="hidden" id="project-entry-editing-id">
+
+      <div class="field-row">
+        <div class="field">
+          <label>日期（可自由填写，如 2026.07 或 2026-07-10）</label>
+          <input type="text" id="project-entry-date" placeholder="例：2026.07">
+        </div>
+        <div class="field">
+          <label>显示状态</label>
+          <div class="radio-group">
+            <label><input type="radio" name="project-entry-published" value="true" checked> 公开</label>
+            <label><input type="radio" name="project-entry-published" value="false"> 草稿（不显示）</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>标题（三语，可留空）</label>
+        <div class="field-row">
+          <input type="text" data-field="project-entry-title.zh" placeholder="中文标题">
+          <input type="text" data-field="project-entry-title.jp" placeholder="日本語タイトル">
+        </div>
+        <div style="margin-top: var(--sp-1);">
+          <input type="text" data-field="project-entry-title.en" placeholder="English title" style="width:100%; border:1px solid var(--surface); background:var(--paper); padding:0.7em 0.8em; font-size:var(--text-sm); font-family:var(--font-serif);">
+        </div>
+      </div>
+
+      <div class="field" data-tab-group="project-entry-desc-langs">
+        <label>更新说明（三语，可留空）</label>
+        <div class="lang-tabs">
+          <button type="button" class="lang-tab is-active" data-tab-target="zh">中文</button>
+          <button type="button" class="lang-tab" data-tab-target="jp">日本語</button>
+          <button type="button" class="lang-tab" data-tab-target="en">English</button>
+        </div>
+        <div class="lang-panel" data-tab-panel="zh">
+          <textarea data-field="project-entry-desc.zh" placeholder="中文说明…（换行会自动分段）"></textarea>
+        </div>
+        <div class="lang-panel" data-tab-panel="jp" hidden>
+          <textarea data-field="project-entry-desc.jp" placeholder="日本語の説明…"></textarea>
+        </div>
+        <div class="lang-panel" data-tab-panel="en" hidden>
+          <textarea data-field="project-entry-desc.en" placeholder="Update description…"></textarea>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>配图（可多张，可留空）</label>
+        <div class="image-drop" id="project-entry-image-drop">点击选择图片（可一次选多张，会自动压缩）</div>
+        <input type="file" id="project-entry-image-input" accept="image/*" multiple hidden>
+        <div class="entry-list" id="project-entry-image-list"></div>
+      </div>
+
+      <div class="btn-row">
+        <button type="submit" class="btn btn-primary" id="project-entry-save-btn">保存</button>
+        <button type="button" class="btn btn-ghost" id="project-entry-cancel-edit" hidden>取消编辑</button>
+      </div>
+    </form>
+
+    <div class="admin-card">
+      <div class="btn-row" style="justify-content: space-between;">
+        <h2 class="admin-title" style="font-size: var(--text-md);">已有更新</h2>
+        <button type="button" class="btn btn-ghost" id="project-entry-refresh-btn">刷新列表</button>
+      </div>
+      <div class="entry-list" id="project-entry-list">
         <p class="field-hint">连接 GitHub 后自动加载。</p>
       </div>
     </div>
@@ -321,6 +450,12 @@
               <div class="rte-editor" contenteditable="true" data-rte="about.en"></div>
             </div>
           </div>
+          <div class="field">
+            <label>配图（可多张，可留空）</label>
+            <div class="image-drop" id="about-image-drop">点击选择图片</div>
+            <input type="file" id="about-image-input" accept="image/*" multiple hidden>
+            <div class="entry-list" id="about-image-list"></div>
+          </div>
           <button type="button" class="btn btn-primary" data-save-page="about" id="save-about-btn">保存 About</button>
         </div>
       </div>
@@ -348,6 +483,12 @@
               <div class="rte-editor" contenteditable="true" data-rte="statement.en"></div>
             </div>
           </div>
+          <div class="field">
+            <label>配图（可多张，可留空）</label>
+            <div class="image-drop" id="statement-image-drop">点击选择图片</div>
+            <input type="file" id="statement-image-input" accept="image/*" multiple hidden>
+            <div class="entry-list" id="statement-image-list"></div>
+          </div>
           <button type="button" class="btn btn-primary" data-save-page="statement" id="save-statement-btn">保存 Statement</button>
         </div>
       </div>
@@ -374,6 +515,12 @@
               <div class="rte-toolbar"><button type="button" data-cmd="bold"><b>B</b></button><button type="button" data-cmd="italic"><i>I</i></button><button type="button" data-cmd="formatBlock" data-val="h3">H</button><button type="button" data-cmd="insertParagraph">¶</button></div>
               <div class="rte-editor" contenteditable="true" data-rte="research.en"></div>
             </div>
+          </div>
+          <div class="field">
+            <label>配图（可多张，可留空）</label>
+            <div class="image-drop" id="research-image-drop">点击选择图片</div>
+            <input type="file" id="research-image-input" accept="image/*" multiple hidden>
+            <div class="entry-list" id="research-image-list"></div>
           </div>
           <button type="button" class="btn btn-primary" data-save-page="research" id="save-research-btn">保存 Research</button>
         </div>
@@ -418,6 +565,12 @@
             <input type="url" id="contact-other" placeholder="https://…">
           </div>
 
+          <div class="field">
+            <label>配图（可多张，可留空）</label>
+            <div class="image-drop" id="contact-image-drop">点击选择图片</div>
+            <input type="file" id="contact-image-input" accept="image/*" multiple hidden>
+            <div class="entry-list" id="contact-image-list"></div>
+          </div>
           <button type="button" class="btn btn-primary" data-save-page="contact" id="save-contact-btn">保存 Contact</button>
         </div>
       </div>
