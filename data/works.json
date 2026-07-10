@@ -82,5 +82,38 @@
       "images": [],
       "videos": []
     }
+  },
+  {
+    "id": "life-form-trampling-the-air-mred02bm",
+    "title": {
+      "zh": "生命体—踏碎空气",
+      "jp": "生命体—空気を踏み砕く",
+      "en": "Life Form — Trampling the Air"
+    },
+    "year": "2025",
+    "size": "145 × 121 cm",
+    "material": "岩絵具",
+    "description": {
+      "zh": "从被囚禁的绣楼开始，粒子四散、行方不明，只留下影子般的魂——这是我对自己最直接的一次解剖。\n《生命体—空气踏碎》是我对”第四粒子的物语”所做的一次创作性尝试。故事从”底”开始——我以中国古代女性被囚禁的”绣楼”作为母题：那是一种看不见、却始终无法被打破的规则、秩序与结构的象征。常常被忽视、却确确实实持续存在着的粒子们，在不同的世界中流动，自由地尝试各种形态与可能性，尽情享受着属于自己的身体性。随后，粒子四散于四方，逐渐迷失方向，最终只留下影子般的魂魄。画面中出现的这些形象，与其说是某种被深思熟虑后确定下来的思想表达，不如说更接近我直觉本身的直接显现——我感觉，这是我迄今为止对自己进行过的、最为直接的一次解剖。",
+      "jp": "閉じ込められた繍楼から物語は始まり、粒子は四方へ散って行方を失い、影のような魂だけが残る——自分自身を最も直接的に解剖した結果。\n『生命体—空気を踏み砕く』は、「第四粒子の物語」に対する私なりの創作的試みです。物語は”底”から始まります。中国古代の女性が閉じ込められた「繍楼」をモチーフとし、それは目に見えないにもかかわらず、決して破ることのできない規則や秩序、構造を象徴しています。しばしば見落とされながらも、確かに存在し続ける粒子たちは、異なる世界の中を流れ、さまざまな形態や可能性を自由に試み、自らの身体性を存分に楽しみます。やがて粒子は四方へ散り、行方を失い、そこには影のような魂だけが残ります。画面に現れるこれらの像は、思考の具体的な表現というより、むしろ私自身の直感そのものの現れであり、自分自身をこれまでで最も直接的に解剖した結果だと感じています。",
+      "en": "The story begins in a locked chamber; the particles scatter in every direction and lose their way, leaving only a shadow-like soul — my most direct dissection of myself.\nLife Form — Trampling the Air is my creative attempt at telling “the story of the Fourth Particle.” The narrative begins at the “bottom,” taking as its motif the xiulou — the chamber in which women were confined in old China — a symbol of a rule, order, and structure that is invisible yet can never be broken. Particles that are often overlooked, yet undeniably persist, flow through different worlds, freely testing out forms and possibilities, and taking full pleasure in their own corporeality. Eventually they scatter in every direction, lose their way, and leave behind only a shadow-like soul. The images that appear on the picture plane are less a deliberate articulation of thought than the direct emergence of my own intuition — I feel this as the most direct dissection I have yet made of myself. At 145 × 121 cm, this is currently the largest work in the series."
+    },
+    "sold": false,
+    "published": true,
+    "image": "works/life-form-trampling-the-air-mred02bm.jpg?v=1783653111597",
+    "process": {
+      "description": {
+        "zh": "",
+        "jp": "",
+        "en": ""
+      },
+      "images": [
+        "works/process-1783653020223-vs48h.jpg",
+        "works/process-1783653029290-clsr7.jpg",
+        "works/process-1783653032239-8pzk1.jpg",
+        "works/process-1783653035738-xri61.jpg"
+      ],
+      "videos": []
+    }
   }
 ]
