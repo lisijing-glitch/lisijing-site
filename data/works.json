@@ -174,5 +174,37 @@
       "images": [],
       "videos": []
     }
+  },
+  {
+    "id": "one-more-mree9kel",
+    "title": {
+      "zh": "Ⅲ 还有一个",
+      "jp": "Ⅲ「あとひとつ」",
+      "en": "Ⅲ “One More”"
+    },
+    "year": "2026",
+    "size": "25.7 × 18.2 × 2.0 cm",
+    "material": "木製パネル、雲肌麻紙、岩絵具、練り絵具、胡粉",
+    "description": {
+      "zh": "三部曲的终幕，却不是终结——推动存在前行的，从来只是一种微小的力量。\n本作是这个系列的终幕，但它并不指向一个”结束”。「第四粒子」，是在时间的流动中不断诞生、变化，再转向另一段关系的存在的一种暂时形态。标题中”西瓜尖上那一点点甜”，不是某个需要抵达的目标，而是让存在持续前进的、一种微小力量的比喻。我们始终一边渴求着什么，一边活着；然而我们从来无法完全拥有那个对象。正因为如此，存在才不会停止——它始终在时间之中，不断结成新的关系。本作试图呈现的，正是这种没有终点的、持续生成的状态。",
+      "jp": "三部作の終幕でありながら、終わりではない——存在を動かし続けるのは、いつも微かな力である。\n本作はシリーズの終幕でありながら、終わりを示すものではありません。「第四粒子」とは、時間の流れのなかで生まれ、変化し、再び別の関係へと移行していく存在の仮の姿です。タイトルにある「スイカの先っぽのほんの少しの甘さ」は、到達すべき目的ではなく、存在を動かし続ける微かな力の比喩です。私たちは何かを求めながら生きています。しかし、その対象を完全に手にすることはできません。だからこそ存在は停止せず、時間のなかで新たな関係を結び続けます。本作では、その終わることのない生成の状態を表現しました。",
+      "en": "The final movement of the triptych, yet not an ending — what keeps a being moving forward is always only a small, faint force.\nThis piece closes the series, yet it does not point toward an ending. The Fourth Particle is the temporary form of a being that is born, changes, and shifts into another relation within the flow of time. The “sweetness at the very tip of the watermelon” named in the title is not a goal to be reached, but a figure for the small force that keeps a being moving. We live wanting something, even knowing we can never fully possess it — and it is exactly this that keeps being from ever stopping, forever forming new relations within time."
+    },
+    "sold": false,
+    "published": true,
+    "image": "works/one-more-mree9kel.jpg?v=1783655226218",
+    "process": {
+      "description": {
+        "zh": "",
+        "jp": "",
+        "en": ""
+      },
+      "images": [
+        "works/process-1783655196269-02isq.jpg",
+        "works/process-1783655202237-01999.jpg",
+        "works/process-1783655207450-92swm.jpg"
+      ],
+      "videos": []
+    }
   }
 ]
