@@ -31,6 +31,22 @@
       "year": "2026",
       "category": "group",
       "published": true
+    },
+    {
+      "id": "solo-exhibition-sisei-story-of-a-life-form-mrewlllo",
+      "title": {
+        "zh": " 2025 — 个展「SISEI—生命体の物語」",
+        "jp": "2025 —個展「SISEI—生命体の物語」",
+        "en": "Solo Exhibition “SISEI — Story of a Life Form”"
+      },
+      "location": {
+        "zh": "東京・22CAFE",
+        "jp": "東京・22CAFE",
+        "en": "Tokyo, 22CAFE"
+      },
+      "year": "2025",
+      "category": "solo",
+      "published": true
     }
   ]
 }
