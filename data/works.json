@@ -306,7 +306,24 @@
           }
         }
       ],
-      "exhibitionImages": [],
+      "exhibitionImages": [
+        {
+          "src": "works/gallery-1783688414210-ntbk5.jpg",
+          "caption": {
+            "zh": "",
+            "jp": "",
+            "en": ""
+          }
+        },
+        {
+          "src": "works/gallery-1783688422561-qxz1r.jpg",
+          "caption": {
+            "zh": "",
+            "jp": "",
+            "en": ""
+          }
+        }
+      ],
       "videos": []
     }
   },
