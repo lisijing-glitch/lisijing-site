@@ -12,5 +12,27 @@
   "images": [
     "works/gallery-1783691384134-w7go0.jpg"
   ],
-  "entries": []
+  "entries": [
+    {
+      "id": "sketch-mrezuf8p",
+      "date": "2026·04开启创作",
+      "title": {
+        "zh": "草稿和记录",
+        "jp": "スケッチとメモ",
+        "en": "sketch"
+      },
+      "description": {
+        "zh": "这是它最初的样子，不受一切束缚自由生长，形成了自己的第四粒子并延伸出了绘本故事和角色。柔软的立体作品由我亲手制作，也是作品的一部分，可以和观众参与进来。",
+        "jp": "これは最初の姿です。何ものにも縛られることなく自由に成長し、自らの「第四粒子」を形成し、そこから絵本の物語やキャラクターへと広がっていきました。柔らかな立体作品は私自身の手で制作したもので、作品の一部でもあります。鑑賞者も実際に参加し、関わることができます。",
+        "en": "This is its original form. Free from all constraints, it grew naturally, forming its own Fourth Particle, which gradually expanded into a picture book story and its characters. The soft sculptural piece was handcrafted by me and is an integral part of the artwork. Visitors are invited to participate and interact with it."
+      },
+      "images": [
+        "works/gallery-1783690972612-ri64d.jpg",
+        "works/gallery-1783690977060-9j9xq.jpg",
+        "works/gallery-1783690979601-3xm33.jpg",
+        "works/gallery-1783691431678-8w3ta.jpg"
+      ],
+      "published": true
+    }
+  ]
 }
