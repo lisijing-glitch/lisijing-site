@@ -166,6 +166,11 @@
       "jp": "「生」シリーズ 一二候",
       "en": "“Life” Series: Second Phase of Spring"
     },
+    "series": {
+      "zh": "",
+      "jp": "",
+      "en": ""
+    },
     "year": "2023",
     "size": "30 × 40 cm",
     "material": "岩絵具・銀箔",
@@ -183,7 +188,58 @@
         "jp": "",
         "en": ""
       },
-      "images": [],
+      "images": [
+        {
+          "src": "works/gallery-1783688351583-tvklb.jpg",
+          "caption": {
+            "zh": "",
+            "jp": "",
+            "en": ""
+          }
+        },
+        {
+          "src": "works/gallery-1783688354955-xj8bw.jpg",
+          "caption": {
+            "zh": "",
+            "jp": "",
+            "en": ""
+          }
+        },
+        {
+          "src": "works/gallery-1783688357626-n0tsd.jpg",
+          "caption": {
+            "zh": "",
+            "jp": "",
+            "en": ""
+          }
+        },
+        {
+          "src": "works/gallery-1783688360080-m0kmk.jpg",
+          "caption": {
+            "zh": "",
+            "jp": "",
+            "en": ""
+          }
+        },
+        {
+          "src": "works/gallery-1783688363315-u15y5.jpg",
+          "caption": {
+            "zh": "",
+            "jp": "",
+            "en": ""
+          }
+        }
+      ],
+      "exhibitionImages": [
+        {
+          "src": "works/gallery-1783688369986-f718b.jpg",
+          "caption": {
+            "zh": "",
+            "jp": "",
+            "en": ""
+          }
+        }
+      ],
       "videos": []
     }
   },
