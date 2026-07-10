@@ -57,6 +57,17 @@
         </div>
       </div>
 
+      <div class="field">
+        <label>系列（三语，可留空 · 例：生系列）</label>
+        <div class="field-row">
+          <input type="text" data-field="work-series.zh" placeholder="中文 · 例：生系列">
+          <input type="text" data-field="work-series.jp" placeholder="日本語">
+        </div>
+        <div style="margin-top: var(--sp-1);">
+          <input type="text" data-field="work-series.en" placeholder="English" style="width:100%; border:1px solid var(--surface); background:var(--paper); padding:0.7em 0.8em; font-size:var(--text-sm); font-family:var(--font-serif);">
+        </div>
+      </div>
+
       <div class="field-row">
         <div class="field">
           <label>年份</label>
@@ -110,10 +121,17 @@
       </div>
 
       <div class="field">
-        <label>创作过程图片（可多张，可留空）</label>
+        <label>创作过程图片（可多张，可留空，每张可配简短说明）</label>
         <div class="image-drop" id="process-image-drop">点击选择图片（可一次选多张，会自动压缩）</div>
         <input type="file" id="process-image-input" accept="image/*" multiple hidden>
         <div class="entry-list" id="process-image-list"></div>
+      </div>
+
+      <div class="field">
+        <label>展览现场照片（可多张，可留空，每张可配简短说明）</label>
+        <div class="image-drop" id="process-exhibition-image-drop">点击选择图片（可一次选多张，会自动压缩）</div>
+        <input type="file" id="process-exhibition-image-input" accept="image/*" multiple hidden>
+        <div class="entry-list" id="process-exhibition-image-list"></div>
       </div>
 
       <div class="field">

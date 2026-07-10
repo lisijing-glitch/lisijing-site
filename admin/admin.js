@@ -356,7 +356,109 @@
     };
   }
 
-  const processGallery = makeGalleryManager("process-image-drop", "process-image-input", "process-image-list");
+  function makeCaptionedGalleryManager(dropId, inputId, listId) {
+    let images = []; // [{ src, caption: { zh, jp, en } }]
+
+    function render() {
+      const listEl = qs("#" + listId);
+      if (!listEl) return;
+      if (!images.length) {
+        listEl.innerHTML = '<p class="field-hint">还没有图片。</p>';
+        return;
+      }
+      listEl.innerHTML = images
+        .map(
+          (it, i) => `
+        <div class="captioned-item">
+          <div class="captioned-item-top">
+            <img src="../${escapeHtml(it.src)}" alt="" onerror="this.style.visibility='hidden'">
+            <button type="button" data-del-captioned="${i}">删除</button>
+          </div>
+          <div class="caption-inputs">
+            <input type="text" data-cap-zh="${i}" placeholder="中文说明（可留空）" value="${escapeHtml((it.caption && it.caption.zh) || "")}">
+            <input type="text" data-cap-jp="${i}" placeholder="日本語の説明" value="${escapeHtml((it.caption && it.caption.jp) || "")}">
+            <input type="text" data-cap-en="${i}" placeholder="English caption" value="${escapeHtml((it.caption && it.caption.en) || "")}">
+          </div>
+        </div>`
+        )
+        .join("");
+      qsa("[data-del-captioned]", listEl).forEach((b) =>
+        b.addEventListener("click", () => {
+          images.splice(Number(b.dataset.delCaptioned), 1);
+          render();
+        })
+      );
+      qsa("[data-cap-zh]", listEl).forEach((el) =>
+        el.addEventListener("input", () => {
+          const i = Number(el.dataset.capZh);
+          images[i].caption = images[i].caption || { zh: "", jp: "", en: "" };
+          images[i].caption.zh = el.value;
+        })
+      );
+      qsa("[data-cap-jp]", listEl).forEach((el) =>
+        el.addEventListener("input", () => {
+          const i = Number(el.dataset.capJp);
+          images[i].caption = images[i].caption || { zh: "", jp: "", en: "" };
+          images[i].caption.jp = el.value;
+        })
+      );
+      qsa("[data-cap-en]", listEl).forEach((el) =>
+        el.addEventListener("input", () => {
+          const i = Number(el.dataset.capEn);
+          images[i].caption = images[i].caption || { zh: "", jp: "", en: "" };
+          images[i].caption.en = el.value;
+        })
+      );
+    }
+
+    function wire() {
+      const drop = qs("#" + dropId),
+        input = qs("#" + inputId);
+      if (!drop || !input) return;
+      drop.addEventListener("click", () => input.click());
+      input.addEventListener("change", async () => {
+        const files = Array.from(input.files || []);
+        if (!files.length) return;
+        for (const file of files) {
+          try {
+            toast("正在压缩并上传图片…");
+            const { base64 } = await fileToResizedBase64(file, 1800, 0.82);
+            const path = `works/gallery-${Date.now()}-${Math.random().toString(36).slice(2, 7)}.jpg`;
+            await ghPutFile(path, base64, `配图: ${path}`, null, true);
+            images.push({ src: path, caption: { zh: "", jp: "", en: "" } });
+            render();
+          } catch (err) {
+            toast("上传失败：" + err.message, "error");
+          }
+        }
+        input.value = "";
+      });
+    }
+
+    return {
+      get: () => images.filter((it) => it && it.src),
+      set: (arr) => {
+        images = Array.isArray(arr)
+          ? arr
+              .filter((it) => it && it.src)
+              .map((it) => ({
+                src: it.src,
+                caption: { zh: (it.caption && it.caption.zh) || "", jp: (it.caption && it.caption.jp) || "", en: (it.caption && it.caption.en) || "" },
+              }))
+          : [];
+        render();
+      },
+      wire,
+      render,
+    };
+  }
+
+  const processGallery = makeCaptionedGalleryManager("process-image-drop", "process-image-input", "process-image-list");
+  const exhibitionGallery = makeCaptionedGalleryManager(
+    "process-exhibition-image-drop",
+    "process-exhibition-image-input",
+    "process-exhibition-image-list"
+  );
   const aboutGallery = makeGalleryManager("about-image-drop", "about-image-input", "about-image-list");
   const statementGallery = makeGalleryManager("statement-image-drop", "statement-image-input", "statement-image-list");
   const researchGallery = makeGalleryManager("research-image-drop", "research-image-input", "research-image-list");
@@ -530,12 +632,13 @@
       .map((w, idx) => {
         const t = (w.title && (w.title.zh || w.title.en || w.title.jp)) || "（未命名）";
         const tag = w.published === false ? "草稿" : "公开";
+        const seriesName = (w.series && (w.series.zh || w.series.en || w.series.jp)) || "";
         return `
         <div class="entry-row">
           <img src="../${escapeHtml(w.image || "")}" alt="" onerror="this.style.visibility='hidden'">
           <div class="info">
             <div class="t">${escapeHtml(t)}</div>
-            <div class="m">${escapeHtml(w.year || "")} · ${tag}${w.sold ? " · 已售" : ""}</div>
+            <div class="m">${escapeHtml(w.year || "")}${seriesName ? " · " + escapeHtml(seriesName) : ""} · ${tag}${w.sold ? " · 已售" : ""}</div>
           </div>
           <div class="actions">
             <button type="button" data-move-work-up="${escapeHtml(w.id)}" ${idx === 0 ? "disabled" : ""}>↑</button>
@@ -563,6 +666,7 @@
     qs('input[name="work-published"][value="true"]').checked = true;
     writeTriple("work-process-desc", {});
     processGallery.set([]);
+    exhibitionGallery.set([]);
     currentProcessVideos = [];
     renderProcessVideoList();
   }
@@ -572,6 +676,7 @@
     if (!w) return;
     qs("#work-editing-id").value = w.id;
     writeTriple("work-title", w.title);
+    writeTriple("work-series", w.series);
     qs("#work-year").value = w.year || "";
     qs("#work-size").value = w.size || "";
     qs("#work-material").value = w.material || "";
@@ -589,6 +694,7 @@
     qs("#work-image-input").value = "";
     writeTriple("work-process-desc", w.process && w.process.description);
     processGallery.set(w.process && Array.isArray(w.process.images) ? w.process.images : []);
+    exhibitionGallery.set(w.process && Array.isArray(w.process.exhibitionImages) ? w.process.exhibitionImages : []);
     currentProcessVideos = (w.process && Array.isArray(w.process.videos) ? [...w.process.videos] : []).filter(
       (v) => v && (v.src || v.url)
     );
@@ -638,6 +744,7 @@
       const workObj = {
         id,
         title,
+        series: readTriple("work-series"),
         year: qs("#work-year").value.trim(),
         size: qs("#work-size").value.trim(),
         material: qs("#work-material").value.trim(),
@@ -648,6 +755,7 @@
         process: {
           description: readTriple("work-process-desc"),
           images: processGallery.get(),
+          exhibitionImages: exhibitionGallery.get(),
           videos: currentProcessVideos.filter((v) => v && (v.src || v.url)),
         },
       };
@@ -1101,6 +1209,8 @@
     wireImageDrop("home-image-drop", "home-image-input", "home-image-preview");
     processGallery.wire();
     processGallery.render();
+    exhibitionGallery.wire();
+    exhibitionGallery.render();
     aboutGallery.wire();
     aboutGallery.render();
     statementGallery.wire();
