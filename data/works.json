@@ -123,6 +123,11 @@
       "jp": "Ⅰ「匂い」",
       "en": "Ⅰ“Scent”"
     },
+    "series": {
+      "zh": "系列 ——『小蚂蚁想要西瓜尖尖上那一点点的甜』三部曲",
+      "jp": "系列  ——『ちいさな蟻は、スイカの先っぽのほんの少しの甘さがほしかった』三部曲",
+      "en": "The Little Ant Only Wanted a Little Sweetness at the Tip of the Watermelon"
+    },
     "year": "2026",
     "size": "25.7 × 18.2 × 2.0 cm",
     "material": "木製パネル、雲肌麻紙、岩絵具、練り絵具、胡粉、彩箔",
@@ -140,10 +145,8 @@
         "jp": "",
         "en": ""
       },
-      "images": [
-        "works/process-1783654201156-0i28h.jpg",
-        "works/process-1783654206307-28w8t.jpg"
-      ],
+      "images": [],
+      "exhibitionImages": [],
       "videos": []
     }
   },
