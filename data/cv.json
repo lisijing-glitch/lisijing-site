@@ -1,3 +1,20 @@
 {
-  "exhibitions": []
+  "exhibitions": [
+    {
+      "id": "2026-2026-mreulnty",
+      "title": {
+        "zh": "2026 — ギャラリーへ行こう 2026（数寄和）",
+        "jp": "2026 — ギャラリーへ行こう 2026（数寄和）",
+        "en": "2026 — ギャラリーへ行こう 2026（数寄和）"
+      },
+      "location": {
+        "zh": "数寄和（東京都杉並区西荻北3-42-17）",
+        "jp": "数寄和（東京都杉並区西荻北3-42-17）",
+        "en": "Sukiwa, 3-42-17 Nishiogikita, Suginami-ku, Tokyo"
+      },
+      "year": "2026",
+      "category": "group",
+      "published": true
+    }
+  ]
 }
