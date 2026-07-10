@@ -84,6 +84,32 @@ ul { list-style: none; padding: 0; }
   outline-offset: 3px;
 }
 
+/* ==========================================================================
+   Content protection — a deterrent for casual copying, not real DRM.
+   Only applied on the public site (body gets .protect-content from
+   script.js); the admin panel never adds this class, so editing there is
+   unaffected. Form fields are explicitly excluded so visitors can still
+   type into and select their own message text.
+   ========================================================================== */
+
+.protect-content {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+.protect-content input,
+.protect-content textarea {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  user-select: text;
+}
+.protect-content img {
+  -webkit-user-drag: none;
+  user-drag: none;
+  -webkit-touch-callout: none;
+  pointer-events: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;

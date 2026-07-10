@@ -98,9 +98,9 @@
     return `<div class="gallery-grid">${images
       .map(
         (src, i) => `
-      <a class="gallery-image" href="${escapeHtml(src)}" target="_blank" rel="noopener">
-        <img src="${escapeHtml(src)}" alt="${escapeHtml(altBase || "")} ${i + 1}" loading="lazy" onload="this.parentElement.style.aspectRatio=(this.naturalWidth/this.naturalHeight)">
-      </a>`
+      <div class="gallery-image">
+        <img src="${escapeHtml(src)}" alt="${escapeHtml(altBase || "")} ${i + 1}" loading="lazy" draggable="false" onload="this.parentElement.style.aspectRatio=(this.naturalWidth/this.naturalHeight)">
+      </div>`
       )
       .join("")}</div>`;
   }
@@ -123,9 +123,9 @@
         const cap = pick(it.caption);
         return `
       <figure class="gallery-item">
-        <a class="gallery-image" href="${escapeHtml(it.src)}" target="_blank" rel="noopener">
-          <img src="${escapeHtml(it.src)}" alt="${escapeHtml(cap || altBase || "")} ${i + 1}" loading="lazy" onload="this.parentElement.style.aspectRatio=(this.naturalWidth/this.naturalHeight)">
-        </a>
+        <div class="gallery-image">
+          <img src="${escapeHtml(it.src)}" alt="${escapeHtml(cap || altBase || "")} ${i + 1}" loading="lazy" draggable="false" onload="this.parentElement.style.aspectRatio=(this.naturalWidth/this.naturalHeight)">
+        </div>
         ${cap ? `<figcaption class="gallery-caption">${escapeHtml(cap)}</figcaption>` : ""}
       </figure>`;
       })
@@ -237,7 +237,7 @@
     const tagline = pick(siteData.about.home) || "";
     const image = siteData.about.home && siteData.about.home.image;
     root.innerHTML = `
-      ${image ? `<img class="hero-image" src="${escapeHtml(image)}" alt="" onerror="this.remove()">` : ""}
+      ${image ? `<img class="hero-image" src="${escapeHtml(image)}" alt="" draggable="false" onerror="this.remove()">` : ""}
       <div class="hero-name">${escapeHtml(name)}</div>
       <div class="hero-tagline prose">${tagline}</div>
     `;
@@ -297,7 +297,7 @@
                 (w) => `
               <a class="work-card" href="#/works/${encodeURIComponent(w.id)}">
                 <div class="work-card-frame">
-                  <img src="${escapeHtml(w.image || "")}" alt="${escapeHtml(pick(w.title))}" loading="lazy" onload="this.parentElement.style.aspectRatio=(this.naturalWidth/this.naturalHeight)">
+                  <img src="${escapeHtml(w.image || "")}" alt="${escapeHtml(pick(w.title))}" loading="lazy" draggable="false" onload="this.parentElement.style.aspectRatio=(this.naturalWidth/this.naturalHeight)">
                   ${w.sold ? `<span class="work-card-sold mono">${pick(STATUS_SOLD)}</span>` : ""}
                 </div>
                 <div class="work-card-caption">
@@ -355,7 +355,7 @@
       <a href="#/works" class="work-detail-back mono">${pick(BACK_LABEL)}</a>
       <div class="work-detail">
         <div class="work-detail-image">
-          <img src="${escapeHtml(work.image || "")}" alt="${escapeHtml(title)}">
+          <img src="${escapeHtml(work.image || "")}" alt="${escapeHtml(title)}" draggable="false">
         </div>
         <div>
           ${work.sold ? `<span class="work-detail-status mono">${pick(STATUS_SOLD)}</span>` : ""}
@@ -529,6 +529,24 @@
     });
   }
 
+  function initCopyProtection() {
+    document.body.classList.add("protect-content");
+
+    document.addEventListener("contextmenu", (e) => {
+      const tag = (e.target.tagName || "").toLowerCase();
+      if (tag === "input" || tag === "textarea") return;
+      e.preventDefault();
+    });
+
+    document.addEventListener(
+      "dragstart",
+      (e) => {
+        if (e.target.tagName === "IMG") e.preventDefault();
+      },
+      { capture: true }
+    );
+  }
+
   function initChrome() {
     const header = document.querySelector(".site-header");
     window.addEventListener(
@@ -625,6 +643,7 @@
 
     initChrome();
     initContactForm();
+    initCopyProtection();
     initHorizonField();
     await loadData();
     render();
