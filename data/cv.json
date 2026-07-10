@@ -95,6 +95,22 @@
       "year": "2025",
       "category": "group",
       "published": true
+    },
+    {
+      "id": "xuancai-liuyun-qimeng-shanqu-award-yunnan-exhibition-yunnan-china-mrexqs4h",
+      "title": {
+        "zh": "炫彩流韵・绮梦-山取奖云南展",
+        "jp": "「炫彩流韻・綺夢」山取賞雲南展（雲南・中国）",
+        "en": "Xuancai Liuyun · Qimeng: Shanqu Award Yunnan Exhibition, Yunnan, China"
+      },
+      "location": {
+        "zh": "云南",
+        "jp": "雲南・中国",
+        "en": "Yunnan, China"
+      },
+      "year": "2025",
+      "category": "group",
+      "published": true
     }
   ]
 }
