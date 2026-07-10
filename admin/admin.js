@@ -238,6 +238,25 @@
 
   /* ---- image: resize + compress on-device before it ever leaves the browser ---- */
 
+  function drawWatermark(ctx, width, height, text) {
+    if (!text) return;
+    const fontSize = Math.max(12, Math.round(Math.min(width, height) * 0.032));
+    ctx.save();
+    ctx.font = `${fontSize}px "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace`;
+    ctx.textBaseline = "bottom";
+    ctx.textAlign = "right";
+    const paddingX = fontSize * 0.9;
+    const paddingY = fontSize * 0.9;
+    const x = width - paddingX;
+    const y = height - paddingY;
+    ctx.lineWidth = Math.max(2, fontSize * 0.14);
+    ctx.strokeStyle = "rgba(0,0,0,0.35)";
+    ctx.strokeText(text, x, y);
+    ctx.fillStyle = "rgba(255,255,255,0.55)";
+    ctx.fillText(text, x, y);
+    ctx.restore();
+  }
+
   function fileToResizedBase64(file, maxDim, quality) {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
@@ -261,6 +280,10 @@
           ctx.fillStyle = "#fff";
           ctx.fillRect(0, 0, width, height);
           ctx.drawImage(img, 0, 0, width, height);
+          const cfg = getConfig();
+          if (cfg && cfg.watermarkEnabled !== false && cfg.watermarkText) {
+            drawWatermark(ctx, width, height, cfg.watermarkText);
+          }
           const dataUrl = canvas.toDataURL("image/jpeg", quality);
           resolve({ base64: dataUrl.split(",")[1], dataUrl });
         };
@@ -1235,6 +1258,8 @@
       qs("#gh-repo").value = cfg.repo || "";
       qs("#gh-branch").value = cfg.branch || "main";
       qs("#gh-token").value = cfg.token || "";
+      qs("#watermark-text").value = cfg.watermarkText || "";
+      (qs(`input[name="watermark-enabled"][value="${cfg.watermarkEnabled === false ? "false" : "true"}"]`) || {}).checked = true;
       if (cfg.token) testConnection();
     }
     qs("#settings-form").addEventListener("submit", (e) => {
@@ -1244,6 +1269,8 @@
         repo: qs("#gh-repo").value.trim(),
         branch: qs("#gh-branch").value.trim() || "main",
         token: qs("#gh-token").value.trim(),
+        watermarkText: qs("#watermark-text").value.trim(),
+        watermarkEnabled: qs('input[name="watermark-enabled"]:checked').value === "true",
       });
       toast("设置已保存在本机浏览器中。");
       testConnection();

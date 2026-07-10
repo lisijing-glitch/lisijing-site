@@ -631,6 +631,22 @@
           <p class="field-hint">只保存在本机浏览器，不会上传到任何地方。</p>
         </div>
       </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label>图片水印文字（留空则不加水印）</label>
+          <input type="text" id="watermark-text" placeholder="例：© SIJING" autocomplete="off">
+        </div>
+        <div class="field">
+          <label>是否给新上传的图片加水印</label>
+          <div class="radio-group">
+            <label><input type="radio" name="watermark-enabled" value="true" checked> 开启</label>
+            <label><input type="radio" name="watermark-enabled" value="false"> 关闭</label>
+          </div>
+        </div>
+      </div>
+      <p class="field-hint" style="margin-top: -0.8em; margin-bottom: var(--sp-2);">水印会直接印在图片上，只影响之后新上传的图片，已上传的旧图片不会自动补加。</p>
+
       <div class="btn-row">
         <button type="submit" class="btn btn-primary">保存设置</button>
         <button type="button" class="btn" id="gh-test-btn">测试连接</button>
