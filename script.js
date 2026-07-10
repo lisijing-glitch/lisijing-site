@@ -45,7 +45,7 @@
      backend. No server of our own is involved, and no GitHub token is ever
      exposed to site visitors. Replace the endpoint below with your own
      Formspree form URL after creating a free account. */
-  const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
+  const FORMSPREE_ENDPOINT = "https://formspree.io/f/xdarqglq";
 
   const MESSAGE_FORM_LABELS = {
     name: { zh: "姓名", jp: "お名前", en: "Name" },
