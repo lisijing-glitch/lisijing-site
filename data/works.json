@@ -641,5 +641,39 @@
       "exhibitionImages": [],
       "videos": []
     }
+  },
+  {
+    "id": "indeterminate-restraint-mreyz1gc",
+    "title": {
+      "zh": "不确定的约束",
+      "jp": "不確定な拘束",
+      "en": "Indeterminate Restraint"
+    },
+    "series": {
+      "zh": "",
+      "jp": "",
+      "en": ""
+    },
+    "year": "2026",
+    "size": "41.0×31.8cm",
+    "material": "紙本墨彩・岩絵具・顔彩・動物膠",
+    "description": {
+      "zh": "不确定的拘束——粒子构成的社会结构，同时也是重叠、也是束缚。",
+      "jp": "不確定な拘束——粒子が織りなす社会構造は、重なりであると同時に、拘束でもある。",
+      "en": "Indeterminate Restraint — the social structure woven by particles is, at once, an overlap and a restraint."
+    },
+    "sold": false,
+    "published": true,
+    "image": "works/indeterminate-restraint-mreyz1gc.jpg?v=1783690006166",
+    "process": {
+      "description": {
+        "zh": "",
+        "jp": "",
+        "en": ""
+      },
+      "images": [],
+      "exhibitionImages": [],
+      "videos": []
+    }
   }
 ]
