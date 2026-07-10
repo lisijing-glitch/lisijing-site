@@ -115,5 +115,36 @@
       ],
       "videos": []
     }
+  },
+  {
+    "id": "scent-mredonrp",
+    "title": {
+      "zh": "Ⅰ 气味",
+      "jp": "Ⅰ「匂い」",
+      "en": "Ⅰ“Scent”"
+    },
+    "year": "2026",
+    "size": "25.7 × 18.2 × 2.0 mm",
+    "material": "木製パネル、雲肌麻紙、岩絵具、練り絵具、胡粉、彩箔",
+    "description": {
+      "zh": "还没有轮廓的存在开始显现的瞬间——还不能触碰，也不能看见，只有它的存在被微微感觉到。\n通过「第四粒子」这个概念，持续思考在时间与空间中不断流动的存在。本作描绘的正是这样一个瞬间：一个还未获得轮廓的存在，刚刚开始显现。画面上出现的形态，是身体，同时又不是身体；是记忆，同时又不是记忆——它们不是被固定下来的对象，而是在时间的流动中暂时结成、又终将松开的关系痕迹。第一幕题为”匂い”（气味），指的是某种事物即将诞生前的预感：此刻，它还不能被触碰，也还不能被看见，唯有它的存在，才刚刚开始被微弱地感觉到。我试图描绘的，正是这种暧昧的、正在浮现却尚未成形的起始状态。",
+      "jp": "まだ輪郭を持たない存在が現れ始める瞬間——触れることも見ることもできないが、その存在だけが微かに感じられる。\n私は「第四粒子」という概念を通して、時間と空間のなかで流動し続ける存在について考えています。本作は、まだ輪郭を持たない存在が現れ始める瞬間を描いています。画面に現れる形態は、身体であると同時に身体ではなく、記憶であると同時に記憶でもありません。それらは固定された対象ではなく、時間の流れのなかで一時的に結びついた関係の痕跡です。第一幕「匂い」とは、何かが生まれる予感です。まだ触れることも見ることもできませんが、その存在だけが微かに感じられます。私は、その曖昧な立ち上がりの状態を描こうと試みました。",
+      "en": "The moment a not-yet-outlined being begins to appear — before it can be touched or seen, only its presence is faintly felt.\nThis piece depicts the moment a being begins to appear before it has taken on any outline. The forms that surface on the picture plane are body and not-body, memory and not-memory at once — not fixed objects, but the traces of a relation temporarily bound together within the flow of time. The first movement, “Scent,” is the premonition that something is about to be born: it cannot yet be touched or seen, only faintly sensed."
+    },
+    "sold": false,
+    "published": true,
+    "image": "works/scent-mredonrp.jpg?v=1783654258171",
+    "process": {
+      "description": {
+        "zh": "",
+        "jp": "",
+        "en": ""
+      },
+      "images": [
+        "works/process-1783654201156-0i28h.jpg",
+        "works/process-1783654206307-28w8t.jpg"
+      ],
+      "videos": []
+    }
   }
 ]
