@@ -555,6 +555,11 @@
       "jp": "両面の修辞",
       "en": "  Rhetoric of Two Sides"
     },
+    "series": {
+      "zh": "",
+      "jp": "",
+      "en": ""
+    },
     "year": "2026",
     "size": "41.0×31.8cm",
     "material": "紙本墨彩・岩絵具・顔彩・動物膠",
@@ -565,7 +570,7 @@
     },
     "sold": false,
     "published": true,
-    "image": "works/rhetoric-of-two-sides-mrel5860.jpg?v=1783666781590",
+    "image": "works/rhetoric-of-two-sides-mrel5860.jpg?v=1783735253490",
     "process": {
       "description": {
         "zh": "",
@@ -573,10 +578,32 @@
         "en": ""
       },
       "images": [
-        "works/process-1783666605129-p6h96.jpg",
-        "works/process-1783666607719-d4kj9.jpg",
-        "works/process-1783666610373-31563.jpg"
+        {
+          "src": "works/gallery-1783735205335-08b9n.jpg",
+          "caption": {
+            "zh": "",
+            "jp": "",
+            "en": ""
+          }
+        },
+        {
+          "src": "works/gallery-1783735209553-65kln.jpg",
+          "caption": {
+            "zh": "",
+            "jp": "",
+            "en": ""
+          }
+        },
+        {
+          "src": "works/gallery-1783735212750-gluw8.jpg",
+          "caption": {
+            "zh": "",
+            "jp": "",
+            "en": ""
+          }
+        }
       ],
+      "exhibitionImages": [],
       "videos": []
     }
   },
