@@ -745,5 +745,48 @@
       "exhibitionImages": [],
       "videos": []
     }
+  },
+  {
+    "id": "a-life-not-yet-defined1-2-mrfyc05q",
+    "title": {
+      "zh": "还未被定义的生命1-2",
+      "jp": "まだ誰にも定義されていない生命1-2",
+      "en": " A Life Not Yet Defined1-2"
+    },
+    "series": {
+      "zh": " A Life Not Yet Defined",
+      "jp": " A Life Not Yet Defined",
+      "en": " A Life Not Yet Defined"
+    },
+    "year": "2026",
+    "size": "90.1x116.5cm",
+    "material": "岩絵具・雲肌麻紙など",
+    "description": {
+      "zh": "《还未被定义的生命》是一件仍在生成的作品。它从不被视为完成，而是在与观看者的相遇中，不断被创作出来。\n这里有一幅画，和一件我亲手制作的柔软立体作品——你也可以坐在它上面，慢慢观看。\n请想象一种属于你的生命：它不必真实存在，也不必符合任何规则。请把它画在纸上。\n这些画稿不会被覆盖到画面之上。我会把它们组合起来，以现在这幅画为起点，向外延展，慢慢长成一幅长卷。在新延展出的画面里，我也会写入你的署名。因此，这件作品无法只属于我一个人。\n我只使用天然的矿物与泥土。对我而言，它们是骨骼，是盛放记忆与时间的容器，是构成生命的元素。\n一个生命、一个人，永远不会被完全定义。我们都还在生成的途中。这件作品，也是如此——没有最终完成的形态，只随每一次相遇继续生长。",
+      "jp": "「まだ誰にも定義されていない生命」は、今も生成し続けている作品です。完成したものとしてではなく、観る人との出会いの中で、絶えず作られ続けていきます。\nここには一枚の絵と、私が手で制作した柔らかい立体作品があります——そこに腰を下ろし、座って、ゆっくりご覧いただくこともできます。\nあなただけの生命を想像してみてください。実在する必要はなく、どんな規則にも縛られません。そして、それを紙に描いてください。\n描かれた下絵を、私は画面の上に塗り重ねることはしません。それらを組み合わせ、今のこの絵を起点として外へと延ばし、少しずつ、一つの長い絵巻へと育てていきます。新しく延びていく画面には、あなたの署名も書き入れます。ですからこの作品は、私一人のものにはなりません。\n私が用いるのは、天然の鉱物と土だけです。私にとってそれらは、骨であり、記憶と時間を納める器であり、生命をかたちづくる要素です。\n一つの生命、一人の人間は、決して完全には定義されません。私たちは、みな、まだ生成の途中にいます。この作品もまた同じです——完成形を持たず、出会いのたびに、ただ生き続けていきます。",
+      "en": "A Life Not Yet Defined is a work still in generation. It is never treated as finished; instead, it is continually made through encounters with those who view it.\nHere are a painting and a soft sculpture I made by hand — you are welcome to sit on it and take your time.\nImagine a living creature of your own: it need not exist, and follows no rule. Please draw it on paper.\nThese drawings are not painted over the surface. I gather them and, taking this painting as a point of departure, extend the work outward, letting it grow slowly into a long handscroll. Into each newly extended passage, I inscribe your signature as well. And so this work cannot belong to me alone.\nI work only with natural minerals and earth. For me they are a skeleton, a vessel that holds memory and time, an element of life itself.\nA life — a person — is never fully defined. We are all still in the middle of becoming. So is this work: it has no final form, and simply keeps living, with every encounter."
+    },
+    "sold": false,
+    "published": true,
+    "image": "works/a-life-not-yet-defined1-2-mrfyc05q.jpg?v=1783749396090",
+    "process": {
+      "description": {
+        "zh": "",
+        "jp": "",
+        "en": ""
+      },
+      "images": [
+        {
+          "src": "works/gallery-1783749381982-ax8ci.jpg",
+          "caption": {
+            "zh": "",
+            "jp": "",
+            "en": ""
+          }
+        }
+      ],
+      "exhibitionImages": [],
+      "videos": []
+    }
   }
 ]
