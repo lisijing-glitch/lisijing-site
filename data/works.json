@@ -449,7 +449,40 @@
           }
         }
       ],
-      "exhibitionImages": [],
+      "exhibitionImages": [
+        {
+          "src": "works/gallery-1784031049228-3kwty.jpg",
+          "caption": {
+            "zh": "",
+            "jp": "",
+            "en": ""
+          }
+        },
+        {
+          "src": "works/gallery-1784031052718-bbzzh.jpg",
+          "caption": {
+            "zh": "",
+            "jp": "",
+            "en": ""
+          }
+        },
+        {
+          "src": "works/gallery-1784031054949-rrvwq.jpg",
+          "caption": {
+            "zh": "",
+            "jp": "",
+            "en": ""
+          }
+        },
+        {
+          "src": "works/gallery-1784031057745-yvafx.jpg",
+          "caption": {
+            "zh": "",
+            "jp": "",
+            "en": ""
+          }
+        }
+      ],
       "videos": []
     }
   },
