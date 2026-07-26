@@ -1033,5 +1033,72 @@
       "exhibitionImages": [],
       "videos": []
     }
+  },
+  {
+    "id": "work-ms1192ih",
+    "title": {
+      "zh": "还未被定义的生命",
+      "jp": "まだ誰にも定義されていない生命",
+      "en": ""
+    },
+    "series": {
+      "zh": "",
+      "jp": "",
+      "en": ""
+    },
+    "year": "2026",
+    "size": "180.2x116.5cm",
+    "material": "日本画・不定形オブジェ・参加型インスタレーション",
+    "description": {
+      "zh": "《未被定义的生命》\n\n《未被定义的生命》持续探索生命处于生成之中的状态。作品中的形体没有被赋予明确的名称、身份或固定的边界，而是在材料、空间与观看的关系中保持开放。生命并非一个已经完成的存在，而是在不断变化、相互作用与被感知的过程中形成。\n\n",
+      "jp": "『未だ定義されていない生命』\n『未だ定義されていない生命』は、生成の途上にある生命の状態を継続的に探究する作品シリーズである。作品に現れる形態には、明確な名称やアイデンティティ、固定された境界が与えられておらず、素材、空間、そして鑑賞という関係の中で開かれた状態を保っている。生命はすでに完成された存在ではなく、絶えず変化し、相互に作用し、知覚される過程の中で形成されていく。",
+      "en": "Undefined Life\nUndefined Life is an ongoing exploration of life in a state of becoming. The forms that appear in the works are not given clear names, identities, or fixed boundaries. Instead, they remain open within the relationships among materials, space, and viewing. Life is not something that has already been completed, but something that takes shape through processes of constant change, interaction, and perception."
+    },
+    "sold": false,
+    "published": true,
+    "image": "works/work-ms1192ih.jpg?v=1785024088870",
+    "process": {
+      "description": {
+        "zh": "作品以岩彩、矿物颜料等材料为基础，通过颗粒、色彩与层叠关系构建具有生命感的形态。材料自身的质地、沉积与变化成为作品的一部分，使画面呈现出一种介于自然物质与未知生命之间的状态。画面中的形态既无法被完全定义，也不试图指向某一种具体的生命，而是保留一种尚未被命名的可能性。\n\n在这一系列中，画面中的形态、材料留下的痕迹以及观看者与作品之间的距离，共同构成作品的感知经验。观看者在接近、凝视与想象的过程中不断与作品产生新的关系。由此逐渐延伸出对空间与观看关系的思考：\n艺术作品在展览过程中同时被观看者不断更新，如同生命的诞生过程通过关系而不断生成，历史记忆通过关系的延续而被储存，永不停息。\n《未被定义的生命》试图保留这种未完成性。不试图定义生命是什么，只是让生命保持在尚未被确定、尚未被命名的状态之中，在材料、时间、空间与观看之间持续发生。\n",
+        "jp": "作品は岩絵具や鉱物顔料などの素材を基盤とし、粒子、色彩、重なりの関係を通して、生命感をもつ形態を構築している。素材そのものの質感、堆積、変化も作品の一部となり、画面には自然物質と未知の生命との間にあるような状態が現れる。画面上の形態は完全に定義されることもなく、特定の生命を指し示すこともない。その代わりに、まだ名づけられていない可能性を保ち続けている。\nこのシリーズにおいて、画面上の形態、素材が残す痕跡、そして鑑賞者と作品との距離が、作品の知覚体験をともに構成している。鑑賞者は作品に近づき、凝視し、想像する過程の中で、作品との新たな関係を絶えず生み出していく。そこから、空間と鑑賞の関係についての思考が徐々に広がっていく。\n芸術作品は、展示される過程において鑑賞者によって絶えず更新される。同じように、生命の誕生も関係性を通して絶えず生成され、歴史の記憶も関係の継続によって蓄積され、保存されていく。そして、それは決して止まることがない。\n『未だ定義されていない生命』は、この未完の状態を保とうとする。生命とは何かを定義しようとするのではなく、生命を、まだ確定されておらず、まだ名づけられていない状態のままにしておく。そして、素材、時間、空間、鑑賞の間で、生命が絶えず生成し続ける状態を捉えようとしている。",
+        "en": "The works are based on materials such as Iwa-enogu (mineral pigments) and other mineral pigments, using relationships among particles, colors, and layers to construct forms that evoke a sense of life. The textures, accumulation, and transformations of the materials themselves become part of the work, creating a state that exists somewhere between natural matter and unknown forms of life. The forms within the paintings cannot be fully defined, nor do they point to any specific form of life. Instead, they retain the possibility of something that has not yet been named.\n\nIn this series, the forms within the paintings, the traces left by the materials, and the distance between the viewer and the work together constitute the experience of perception. As viewers approach, contemplate, and imagine, they continuously form new relationships with the work. From this, a reflection on the relationship between space and viewing gradually emerges.\n\nArtworks are continuously renewed by viewers throughout the process of exhibition. In the same way, the emergence of life is continuously generated through relationships, while historical memories are stored and preserved through the continuation of relationships, never coming to an end.\n\nUndefined Life seeks to preserve this state of incompleteness. Rather than attempting to define what life is, it allows life to remain in a state that has not yet been determined or named, continuing to emerge between materials, time, space, and viewing."
+      },
+      "images": [],
+      "exhibitionImages": [
+        {
+          "src": "works/gallery-1785024035275-vbm8r.jpg",
+          "caption": {
+            "zh": "",
+            "jp": "",
+            "en": ""
+          }
+        },
+        {
+          "src": "works/gallery-1785024038164-6bbey.jpg",
+          "caption": {
+            "zh": "",
+            "jp": "",
+            "en": ""
+          }
+        },
+        {
+          "src": "works/gallery-1785024056477-u5oq8.jpg",
+          "caption": {
+            "zh": "",
+            "jp": "",
+            "en": ""
+          }
+        },
+        {
+          "src": "works/gallery-1785024069628-3b7ie.jpg",
+          "caption": {
+            "zh": "",
+            "jp": "",
+            "en": ""
+          }
+        }
+      ],
+      "videos": []
+    }
   }
 ]
