@@ -1159,5 +1159,80 @@
       "exhibitionImages": [],
       "videos": []
     }
+  },
+  {
+    "id": "flower-within-a-flower-mt7yn4fz",
+    "title": {
+      "zh": "花 生花",
+      "jp": "花 生花",
+      "en": "Flower Within a Flower"
+    },
+    "series": {
+      "zh": "生系列",
+      "jp": "生シリーズ",
+      "en": "life series"
+    },
+    "year": "2026",
+    "size": "30x40cm",
+    "material": "岩絵具・桑皮纸・膠など",
+    "description": {
+      "zh": "我们好像一直在等待一个确定的答案。\n\n关于自己，关于生活，也关于以后。\n\n可是走了很久以后，才发现，有些事情好像一直没有答案。\n\n一个花朵里面，又生出另一个花朵。\n\n它还是原来的花吗？\n\n还是已经成为了另外一种存在？\n\n也许有些东西，不急着知道答案也很好。",
+      "jp": "私たちは、いつも何かしらの確かな答えを待っているように思う。\n\n自分について。\n生活について。\nこれからについて。\n\nけれど、長く歩いているうちに、どうしても答えのないものもあるのだと気づく。\n\n一つの花の中に、もう一つの花が生まれる。\n\nそれは、もとの花のままなのか。\n\nそれとも、すでに別の存在になっているのか。\n\nまだ答えを急がなくてもいいものが、あるのかもしれない。",
+      "en": "We seem to be constantly waiting for a definite answer.\n\nAbout who we are,\nabout life,\nand about what comes next.\n\nBut after walking for a long time, we may begin to realize that some things simply have no answer.\n\nA flower grows another flower within itself.\n\nIs it still the same flower?\n\nOr has it already become something else?\n\nPerhaps some things do not need to be answered just yet."
+    },
+    "sold": false,
+    "published": true,
+    "image": "works/flower-within-a-flower-mt7yn4fz.jpg?v=1787619761447",
+    "process": {
+      "description": {
+        "zh": "本作延续“生系列”对生命与存在状态的持续关注。\n\n创作从花的形态出发，在绘画过程中不断观察形态的生长、变化与转换。一个花朵之中再次生出花朵，形态在不断描绘、覆盖与调整的过程中逐渐形成。\n\n我并没有预先确定它最终应该成为怎样的形象，而是保留绘画过程中不断发生变化的部分，让作品停留在一种尚未完全确定的状态。",
+        "jp": "本作は、「生」シリーズにおいて継続している、生命と存在の変化する状態への関心から制作した。\n\n花の形態を出発点として、制作の中で形の生まれ方、変化、移り変わりを観察した。一つの花の内側から、もう一つの花が生まれるように、描く、重ねる、覆う、調整するという過程の中で、少しずつ形を形成していった。\n\n最初から最終的な形を決めるのではなく、制作の途中で生じる変化を残し、完全には定まらない状態のまま作品を成立させている。",
+        "en": "This work continues the SHENG Series and its ongoing exploration of life and shifting states of existence.\n\nBeginning with the form of a flower, I observed the processes of growth, transformation, and change throughout the making of the work. A flower emerges from within another flower, while the form gradually developed through drawing, layering, covering, and adjustment.\n\nRather than deciding in advance what the final form should become, I chose to preserve the changes that occurred during the process, allowing the work to remain in a state that is not completely defined."
+      },
+      "images": [
+        {
+          "src": "works/gallery-1787619725378-ia3qh.jpg",
+          "caption": {
+            "zh": "",
+            "jp": "",
+            "en": ""
+          }
+        },
+        {
+          "src": "works/gallery-1787619729553-r6ijn.jpg",
+          "caption": {
+            "zh": "",
+            "jp": "",
+            "en": ""
+          }
+        },
+        {
+          "src": "works/gallery-1787619732545-sg2xc.jpg",
+          "caption": {
+            "zh": "",
+            "jp": "",
+            "en": ""
+          }
+        },
+        {
+          "src": "works/gallery-1787619735825-vg15q.jpg",
+          "caption": {
+            "zh": "",
+            "jp": "",
+            "en": ""
+          }
+        },
+        {
+          "src": "works/gallery-1787619739235-8ex2k.jpg",
+          "caption": {
+            "zh": "",
+            "jp": "",
+            "en": ""
+          }
+        }
+      ],
+      "exhibitionImages": [],
+      "videos": []
+    }
   }
 ]
