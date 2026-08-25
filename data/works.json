@@ -1100,5 +1100,64 @@
       ],
       "videos": []
     }
+  },
+  {
+    "id": "relationship-mt7yh8r0",
+    "title": {
+      "zh": "关系",
+      "jp": "関係",
+      "en": "relationship"
+    },
+    "series": {
+      "zh": "    生系列",
+      "jp": "    『生』シリーズ",
+      "en": "    Life Series"
+    },
+    "year": "2026",
+    "size": "30x40cm",
+    "material": "岩絵具・桑皮纸・膠など",
+    "description": {
+      "zh": "我们认识的，是谁？\n\n人与人之间，好像总有一些说不清楚的东西。\n\n我们靠近，也疏远；\n熟悉，也重新变得陌生。\n\n有些关系改变了我们，却很难说清楚究竟从什么时候开始。\n\n当我们不断靠近另一个人，也不断受到彼此影响时，\n\n我们认识的究竟是对方，\n\n还是关系中的自己？",
+      "jp": "私たちが知っているのは、誰なのか。\n\n人と人とのあいだには、どうしても言葉にできないものがある。\n\n近づいたり、遠ざかったり。\n親しくなったり、また知らない人のようになったり。\n\nある関係が私たちを変えていく。\n\nけれど、それがいつ始まったのかは、なかなか言葉にできない。\n\n誰かに近づき、互いに影響を受けながら生きていくとき、\n\n私たちが知ろうとしているのは相手なのか、\n\nそれとも、その関係の中にいる自分自身なのか。",
+      "en": "Who is it that we know?\n\nThere always seem to be things between people that are difficult to put into words.\n\nWe come closer, and drift apart.\nWe become familiar, and then strangers again.\n\nSome relationships change us, yet it is difficult to say exactly when that change began.\n\nAs we move closer to one another and continue to influence each other,\n\nwho is it that we come to know,\n\nthe other person,\n\nor ourselves within the relationship?"
+    },
+    "sold": false,
+    "published": true,
+    "image": "works/relationship-mt7yh8r0.jpg?v=1787619478103",
+    "process": {
+      "description": {
+        "zh": "本作于北疆旅途中创作完成。\n\n创作过程中使用了旅途中获得的自然材料，包括从魔鬼城拾取的红泥岩，以及从戈壁滩采集的金云母。\n\n这些来自具体地域的材料并不仅仅作为绘画材料存在，它们本身所携带的颜色、质地以及来自土地的痕迹，也成为作品创作过程中的一部分。",
+        "jp": "本作は北疆を旅する中で制作した。\n\n旅の中で採取した自然素材を用い、魔鬼城で拾った赤い泥岩と、ゴビ砂漠で採取した金雲母を画面に取り入れている。\n\nこれらの素材は単なる画材としてではなく、その土地が持つ色や質感、そして大地の痕跡そのものを、制作の一部として画面に残している。",
+        "en": "This work was created during a journey through Northern Xinjiang.\n\nMaterials gathered during the journey were incorporated into the painting, including red earthstone collected from the Ghost City and golden mica gathered from the Gobi Desert.\n\nThese materials are not simply painting media. Their colors, textures, and traces of the land also became part of the process of making the work."
+      },
+      "images": [
+        {
+          "src": "works/gallery-1787619432752-9sthy.jpg",
+          "caption": {
+            "zh": "",
+            "jp": "",
+            "en": ""
+          }
+        },
+        {
+          "src": "works/gallery-1787619442052-47nwr.jpg",
+          "caption": {
+            "zh": "",
+            "jp": "",
+            "en": ""
+          }
+        },
+        {
+          "src": "works/gallery-1787619452078-wtbjr.jpg",
+          "caption": {
+            "zh": "",
+            "jp": "",
+            "en": ""
+          }
+        }
+      ],
+      "exhibitionImages": [],
+      "videos": []
+    }
   }
 ]
