@@ -1234,5 +1234,64 @@
       "exhibitionImages": [],
       "videos": []
     }
+  },
+  {
+    "id": "life-form-four-balances-mt7z7eih",
+    "title": {
+      "zh": "生命体-四幕",
+      "jp": "生命体―四つの衡",
+      "en": "Life Form — Four Balances "
+    },
+    "series": {
+      "zh": "生命体",
+      "jp": "生命体",
+      "en": "Life Form"
+    },
+    "year": "2025–2026",
+    "size": "145.4 × 121.2 cm F20号・4枚組・縦位置",
+    "material": "岩絵具・骨膠・盛上胡粉・鉄粉",
+    "description": {
+      "zh": "本作品由四幕构成。第一幕「萌芽」、第二幕「决断」、第三幕「跃动」、第四幕「归寂」，分别呈现生命不同的状态。这四种状态并非彼此独立，而是在时间与意识的流动中相互连接，在不断的变化与循环中共同形成一个生命体。「四つの衡」指向生命在这一变化过程中暂时形成的平衡。",
+      "jp": "本作は全四幕で構成されている。第一幕「萌芽」、第二幕「決断」、第三幕「躍動」、第四幕「帰寂」と、それぞれ異なる生命の状態を表している。四つの状態は独立したものではなく、時間と意識の流れの中で互いにつながり、変化と循環を繰り返しながら、一つの生命体を形成している。「四つの衡」は、その変化の過程において一時的に生まれる生命の均衡を示している。",
+      "en": "The work consists of four acts: “Germination,” “Decision,” “Movement,” and “Return to Stillness,” each representing a different state of life. These four states do not exist independently; rather, they are interconnected through the flow of time and consciousness, forming a single life form through continuous cycles of transformation. “Four Balances” refers to the temporary equilibrium that emerges within this process of change."
+    },
+    "sold": false,
+    "published": true,
+    "image": "works/life-form-four-balances-mt7z7eih.jpg?v=1787620698716",
+    "process": {
+      "description": {
+        "zh": "我将四幅画面视为一个完整的生命体，并分别构想其不同的生命状态。通过岩彩、骨胶、盛上胡粉、铁粉等材料，在颗粒的堆积、质感与色彩变化中表现生命的流动与不稳定性。在四幅画面并置的过程中，我不断调整各画面之间的关系，使单幅作品与整体之间同时产生联系，并形成循环性的观看结构。",
+        "jp": "四枚の画面を一つの生命体として捉え、それぞれ異なる生命の状態を構想した。岩絵具や骨膠、盛上胡粉、鉄粉などの素材を用い、粒子の重なりや質感、色彩の変化によって生命の揺らぎを表現している。四枚を並置しながら、各画面の関係性と全体の循環が生まれるよう制作を進めた。",
+        "en": "The four panels were conceived as a single life form, with each panel representing a different state of existence. Mineral pigments, animal glue, moriage gofun, and iron powder were used to explore the instability and movement of life through layers of particles, material textures, and shifts in color. The relationship between the four panels was continuously adjusted during the process, allowing each work to function independently while contributing to a larger cyclical structure."
+      },
+      "images": [
+        {
+          "src": "works/gallery-1787620676230-ho01z.jpg",
+          "caption": {
+            "zh": "",
+            "jp": "",
+            "en": ""
+          }
+        },
+        {
+          "src": "works/gallery-1787620679987-bhit7.jpg",
+          "caption": {
+            "zh": "",
+            "jp": "",
+            "en": ""
+          }
+        },
+        {
+          "src": "works/gallery-1787620686078-gif6q.jpg",
+          "caption": {
+            "zh": "",
+            "jp": "",
+            "en": ""
+          }
+        }
+      ],
+      "exhibitionImages": [],
+      "videos": []
+    }
   }
 ]
